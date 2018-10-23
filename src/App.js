@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import {observer, inject} from 'mobx-react';
+import axios from 'axios';
+import LoginForm from './Components/Forms/LoginForm';
+import SignUpForm from './Components/Forms/SignUpForm';
+import Dart from './Components/Board/Dart';
+
+
 
 @inject("store")
 @observer
@@ -17,8 +23,8 @@ class App extends Component {
   }
 
   callApi = async () => {
-    const response = await fetch('/api/hello');
-    const body = await response.json();
+    const response = await axios.get('/api/hello');
+    const body = await response.data;
 
     if (response.status !== 200) throw Error(body.message);
 
@@ -33,10 +39,13 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-          res:{this.state.response}
+          Res: {this.state.response}
           <ul>
             {this.props.store.users.map((user,i)=><li key={i}>{user.name}</li>)}
           </ul> 
+          <LoginForm/>
+          <SignUpForm/>
+          <Dart/>
           </p>
         </header>
       </div>
