@@ -69,14 +69,17 @@ class DBModels {
 
     //query- 1. all the game of the user
     //query- 2. all the users in a game
-    find(model, userObject, gameObject, includeGame) {
+    find(userObject, gameObject, includeGame) {
         const generalObj = {};
         const include = [];
+        const model = {};
 
         if (includeGame) {
+            model = this.User;
             generalObj = userObject;
             include.push(gameObject)
         } else {
+            model = this.Game;
             generalObj = gameObject;
             include.push(userObject);
         }
