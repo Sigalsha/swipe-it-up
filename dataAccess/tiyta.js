@@ -32,7 +32,7 @@ Actor.belongsToMany(Movie, { through: Movie_Actor })
 Director.hasMany(Movie)
 
 
-User.create({
+Store.create({
     name: "Mike"
 }).then(s => {
     Customer.create({
