@@ -60,12 +60,23 @@ class DBModels {
         return manager;
     }
 
+    
     async addRelation(userObject, gameObject) {
         let user = await this.User.find(userObject);
         let game = await this.Game.find(gameObject)
         user.addGame(game);
+        console.log(game)
+        return true;
     }
 
+    //update or add a player's score
+    async addScore(playerScore, searchObject) {
+        const player = await this.User.update(
+            {score: playerScore},
+            { where: { searchObject }}
+        )
+        return player;
+    }
 
     //query- 1. all the game of the user
     //query- 2. all the users in a game
