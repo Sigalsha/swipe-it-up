@@ -1,5 +1,11 @@
 import {observer, inject} from 'mobx-react';
+import {observable} from 'mobx';
 import React, { Component } from 'react';
+import StartGameBtn  from '../Buttons/StartGameBtn';
+import Players  from './Players';
+import Message  from '../Messages/Message';
+import { setInterval } from 'timers';
+
 
 
 
@@ -7,19 +13,30 @@ import React, { Component } from 'react';
 @inject("store")
 @observer
 class ManagerBoard extends Component {
-
-  state = {
-    message:''
+  
+  @observable showMe = true;
+  
+  toggleShowMe = () => {
+    this.showMe = false;
   }
-
-  render() {
-    console.log(this.props.message);
-    return (
-      <div className="mng-board">ManagerBoard
-      <div>{this.props.message}</div>
-      </div>
-      
-      );
+  
+  message = () => {
+    setTimeout(()=>{
+      return(
+          <div className="mng-board">
+          <Message content='Ready?!? 1,2,3' class='ready-message'/>
+          <Message content='Go' class='go-message'/>
+          </div>) }, 1000);
+    }  
+    
+    render() {
+      return (
+        this.showMe?(<div className="mng-board">
+        <div className='url-title'>url:http://localhost:3000/XXX</div>
+        <StartGameBtn onClick={this.toggleShowMe}/>
+        <Players/>
+        </div>):(this.message())
+        );
+      }
     }
-  }
-  export default ManagerBoard;
+    export default ManagerBoard;

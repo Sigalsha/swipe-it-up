@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 import './App.css';
 import {observer, inject} from 'mobx-react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+// import LoginFormSocket from './Components/Forms/LoginFormSocket';
+import SignUpForm from './Components/Forms/SignUpForm';
 import LoginForm from './Components/Forms/LoginForm';
-// import SignUpForm from './Components/Forms/SignUpForm';
+import ManagerBoard from './Components/Board/ManagerBoard';
 // import Dart from './Components/Board/Dart';
 
 
@@ -36,19 +40,26 @@ class App extends Component {
   render() {
     console.log("res:"+this.state.response);
     return (
+      <Router>
       <div className="App">
-      <header className="App-header">
-      
-      <LoginForm/>
-      {/* <img src={logo} className="App-logo" alt="logo" /> */}
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <ul className="navbar-header nav navbar-nav">
+      <li><Link className="navbar-brand" to="/"></Link></li>
+      <li><Link className="navbar-brand" to="/Login">Log in</Link></li>
+      <li><Link className="navbar-brand" to="/Register">Sign Up</Link></li>
+      </ul>
+      </nav>
+      <Route path="/" exact render={() => (<div>Welcome to Swipe it up </div>)} />
+      <Route path="/Login" exact render={() => (<LoginForm/>)} />
+      <Route path="/Register" exact render={() => (<SignUpForm/>)} />
+      <Route path="/Game" exact render={() => (<ManagerBoard/>)} />
+      <header className="">
       <p>
       {/* Res: {this.state.response} */}
-      {/* <ul> */}
-      {/* {this.props.store.users.map((user,i)=><li key={i}>{user.name}</li>)} */}
-      {/* </ul>  */}
       </p>
       </header>
       </div>
+      </Router>
       );
     }
   }

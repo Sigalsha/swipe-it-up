@@ -1,20 +1,31 @@
 import {observer, inject} from 'mobx-react';
+import {observable} from 'mobx';
 import React, { Component } from 'react';
+import StartGameBtn  from '../Buttons/CreateGameBtn';
 
 @inject("store")
 @observer
 class SignUpForm extends Component {
+  
+  @observable showMe = true
+
+  onSubmit = (event) => {
+    event.preventDefault()
+    this.showMe = false;
+  }
+  
   render() {
     return (
-      <div>SignUp
-      <form>
-      <label>
-      Name:<input type="text" name="name" />
-      </label>
-      <input type="submit" value="Login" />
-      </form>
-      </div>
-      );
+      this.showMe?(<div>Sign Up
+        <form onSubmit={this.onSubmit}>
+        <label>
+        Name:<input type="text" name="name" />
+        </label>
+        <input type="submit" value="SignUp" />
+        </form>
+        </div>):
+        <StartGameBtn/>
+        );
+      }
     }
-  }
-  export default SignUpForm;
+    export default SignUpForm;

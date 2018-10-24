@@ -33,7 +33,48 @@
 
 .mng-board {
   width: 800px;
-  height: 400px;
-  background-color:whitesmoke;
-  color: blue;
+  height: 600px;
+  background-color:gray;
+  color: red;
+  margin-left:20%; 
+  margin-right:20%; 
+}
+
+.create-game-btn {
+  height: 150px;
+  width: 150px;
+  background-color:green;
+  font-size: 25px;
+}
+
+.start-game-btn {
+  height: 50px;
+  width: 150px;
+  background-color: blue;
+}
+
+
+.players{
+  height: 250px;
+  width: 150px;
+  background-color:yellow;
+}
+
+.url-title {
+  font-size: 200%;
+  background-color:teal;
+  color:white;
+}
+
+.go-message{
+  height: 150px;
+  width: 250px;
+  background-color:blue;
+  color: black;
+}
+.ready-message{
+  height: 150px;
+  width: 250px;
+  background-color:orangered;
+  color: black;
 }
