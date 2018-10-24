@@ -1,5 +1,5 @@
 const express = require('express');
-// const dbModels = require('../dataAccess/DBModels');
+const dbModels = require('../dataAccess/DBModels');
 const router = express.Router();
 
 
@@ -15,7 +15,6 @@ const addUser = async function (res, name) {
         res.status(500).send(err);
     }
 }
-
 //post the user name by calling the addUser function (should change to an authentication func below)
 router.post('/user', function (req, res) {
     let { name } = req.body;
@@ -43,7 +42,7 @@ const addGame = async function (time, res) {
         res.status(500).send(err);
     }
 }
-
+//post the start time of the game
 router.post('/game', function (req, res){
     let { time } = req.body;
     addGame(res, time)
@@ -81,7 +80,7 @@ const checkRelation = async function (res, userName, gameId) {
         res.status(500).send(err);
     }
 }
-
+//put the username and gameId to establish the relation
 router.put('/check', function (req, res) {
     let {userName, gameId} = req.body;
     checkRelation(res, userName, gameId)
@@ -101,13 +100,13 @@ const getAllUsers = async function (res, gameId, userName) {
         res.status(500).send(err);
     }
 }
-
 //get userName and gameId with req.query. 
 //I should add a condition for the manager (so he won't be a part of the players)
 router.get('/users', function (req, res) {
     let { userName, gameId } = req.query;
     getAllUsers(res, userName, gameId);
 })
+
 
 
 //add a score to an user:
@@ -122,8 +121,8 @@ const updateScoreToDB = async function (res, playerScore, searchObject ){
         res.status(500).send(err);
     }
 }
-
-router.put('/:user/:score', function (req, res){
+//put the score to the correct user - should fix/add params/query
+router.put('/user/score', function (req, res){
     const {score, userName} = req.body;
     updateScoreToDB(res, score, userName)
 })

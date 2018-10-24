@@ -2,7 +2,7 @@ const Sequelize = require ('sequelize');
 
 class SingletonDB {
     constructor() {
-        this.sequelize =  new Sequelize('postgres://idnswyfi:DjVQcHzVwCyiBjVOobGaAPHoaT8YrebE@horton.elephantsql.com:5432/idnswyfi');
+        this.sequelize =  new Sequelize('mysql://siglasha:123456789@www.db4free.net/swipe_it_up');
         this.start();
     }
 

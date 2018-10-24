@@ -1,4 +1,12 @@
-const dbModel = require('./dataAccess/DBModels');
+const dbModel = require('../../dataAccess/DBModels');
+const Sequelize = require('sequelize')
+
+
+dbModel.setConnections()
+
+dbModel.syncConnections();
+
+
 
 const user1 = {
     userName: "bella",
@@ -24,4 +32,10 @@ console.log(realUser);
 
 const realGame = dbModel.createGame(game)
 console.log(realGame)
+
+
+
+
+
+
 
