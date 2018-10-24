@@ -1,6 +1,6 @@
-const express = require('express');
-const dbModels = require('../dataAccess/DBModels');
-const router = express.Router();
+// const express = require('express');
+// const dbModels = require('../../dataAccess/DBModels');
+// const router = express.Router();
 
 
 //adding a new user in the DB, using the user name from the authentication

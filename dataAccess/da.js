@@ -18,7 +18,7 @@ class SingletonDB {
     
 }
 
-const singletonDB = new SingletonDB();
+const singletonDB = new SingletonDB().sequelize;
 
 module.exports = singletonDB;
 

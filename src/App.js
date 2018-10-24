@@ -17,9 +17,9 @@ class App extends Component {
     this.setState({ result: result })
   }
 
-  // addUser = async (name, imgUrl) => {
+  // addUser = async () => {
   //   try {
-  //     let response = await axios.post('/user', { userName: name, imgUrl: imgUrl })
+  //     let response = await axios.post('/user', { userName: "bob" })
   //     return (response);
   //   }
   //   catch (err) {
@@ -48,10 +48,10 @@ class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <p>
-            res:{this.state.response}
-            <ul>
+            res:{this.state.result}
+            {/* <ul>
               {this.props.store.users.map((user, i) => <li key={i}>{user.name}</li>)}
-            </ul>
+            </ul> */}
           </p>
         </header>
       </div>
