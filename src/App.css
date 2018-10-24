@@ -30,3 +30,10 @@
     transform: rotate(360deg);
   }
 }
+
+.mng-board {
+  width: 800px;
+  height: 400px;
+  background-color:whitesmoke;
+  color: blue;
+}
