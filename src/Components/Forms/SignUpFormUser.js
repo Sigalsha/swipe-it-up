@@ -1,11 +1,11 @@
 import {observer, inject} from 'mobx-react';
 import {observable} from 'mobx';
 import React, { Component } from 'react';
-import CreateGameBtn  from '../Buttons/CreateGameBtn';
+import PlayerBoard  from '../Board/PlayerBoard';
 
 @inject("store")
 @observer
-class SignUpForm extends Component {
+class SignUpFormUser extends Component {
   
   @observable showMe = true
 
@@ -24,8 +24,8 @@ class SignUpForm extends Component {
         <input type="submit" value="SignUp" />
         </form>
         </div>):
-        <CreateGameBtn/>
+        <PlayerBoard/>
         );
       }
     }
-    export default SignUpForm;
+    export default SignUpFormUser;

@@ -41,7 +41,7 @@
 }
 
 .create-game-btn {
-  height: 150px;
+  height: 50px;
   width: 150px;
   background-color:green;
   font-size: 25px;
@@ -67,14 +67,54 @@
 }
 
 .go-message{
-  height: 150px;
-  width: 250px;
+  margin-left: 13%;
+  /* margin-right: 15%; */
+  height: 400px;
+  width: 600px;
   background-color:blue;
   color: black;
+  font-weight: bold;
+  font-size: 250px;
 }
 .ready-message{
-  height: 150px;
-  width: 250px;
+  margin-left: 13%;
+  /* margin-right: 15%; */
+  height: 400px;
+  width: 600px;
   background-color:orangered;
   color: black;
+  font-weight: bold;
+  font-size: 100px;
+}
+
+.game-end-message{
+  margin-left: 13%;
+  /* margin-right: 15%; */
+  height: 400px;
+  width: 600px;
+  background-color:red;
+  color: black;
+  font-weight: bold;
+  font-size: 100px;
+}
+.ready-next-message{
+  margin-left: 13%;
+  /* margin-right: 15%; */
+  height: 400px;
+  width: 600px;
+  background-color:gainsboro;
+  color: black;
+  font-weight: bold;
+  font-size: 80px;
+}
+
+.target {
+  /* background-size: contain; */
+  margin-left: 40%;
+  margin-right: 33%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 150px;
+  width: 150px;
+  background-image: url('https://static.turbosquid.com/Preview/2014/05/19__17_27_04/G.jpg08f412c8-c093-4a71-a40b-709b81e3af0fOriginal.jpg')
 }

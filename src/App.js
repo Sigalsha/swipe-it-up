@@ -9,7 +9,8 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import SignUpForm from './Components/Forms/SignUpForm';
 import LoginForm from './Components/Forms/LoginForm';
 import ManagerBoard from './Components/Board/ManagerBoard';
-// import Dart from './Components/Board/Dart';
+import SignUpFormUser from './Components/Forms/SignUpFormUser';
+
 
 
 
@@ -53,6 +54,7 @@ class App extends Component {
       <Route path="/Login" exact render={() => (<LoginForm/>)} />
       <Route path="/Register" exact render={() => (<SignUpForm/>)} />
       <Route path="/Game" exact render={() => (<ManagerBoard/>)} />
+      <Route path="/User" exact render={() => (<SignUpFormUser/>)} />
       <header className="">
       <p>
       {/* Res: {this.state.response} */}
