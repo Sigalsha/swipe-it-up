@@ -2,47 +2,50 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { observer, inject } from 'mobx-react';
-import Axios from 'axios';
+import axios from 'axios';
 
 @inject("store")
 @observer
 class App extends Component {
   state = {
-    result: ''
+    nameFromServer: '',
+    name: "tina"
   };
 
   componentDidMount = async () => {
     let result = await this.addUser();
-    alert(result);
-    this.setState({ result: result })
+    this.setState({ nameFromServer: result })
   }
 
-  // addUser = async () => {
-  //   try {
-  //     let response = await axios.post('/user', { userName: "bob" })
-  //     return (response);
-  //   }
-  //   catch (err) {
-  //     console.log(err)
-  //   }
-  // }
+     /*put req. to the server, updating the client
+            axios.put('http://localhost:8100/clients', {
+                id: newObject.id,
+                name: name,
+                country: country
+          })
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+          */
 
   addUser = async () => {
-    let name = "bob";
-    try {
-      const response = await Axios.post('/user', { name });
-      console.log(response)
-      return response;
-    }
-    catch (err) {
-      console.error(err);
-      // response.status(500).send(err)
-    }
+    let name = "tina"
+    axios.post('/user', name)
+    .then((res)=> {
+      console.log(name)
+      console.log(res);
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
   };
 
 
   render() {
-    console.log("res:" + this.state.response);
+    console.log("res:" + this.state.result);
     return (
       <div className="App">
         <header className="App-header">
