@@ -8,9 +8,16 @@ import PlayerBoard  from '../Board/PlayerBoard';
 class SignUpFormUser extends Component {
   
   @observable showMe = true
-
+  @observable name = ''
+  
+  handleChange = (event) => {
+    this.name = event.target.value;
+  }
+  
   onSubmit = (event) => {
     event.preventDefault()
+    this.props.store.addUser(this.name);
+    //i/o to DB
     this.showMe = false;
   }
   
@@ -19,7 +26,7 @@ class SignUpFormUser extends Component {
       this.showMe?(<div>Sign Up
         <form onSubmit={this.onSubmit}>
         <label>
-        Name:<input type="text" name="name" />
+        Name:<input type="text" onChange={this.handleChange} name="name" value={this.name} />
         </label>
         <input type="submit" value="SignUp" />
         </form>

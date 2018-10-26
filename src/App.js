@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import logo from './logo.svg';
 import './App.css';
 import {observer, inject} from 'mobx-react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// import LoginFormSocket from './Components/Forms/LoginFormSocket';
+import LoginFormSocket from './Components/Forms/LoginFormSocket';
 import SignUpForm from './Components/Forms/SignUpForm';
 import LoginForm from './Components/Forms/LoginForm';
 import ManagerBoard from './Components/Board/ManagerBoard';
@@ -36,6 +35,8 @@ class App extends Component {
     
     return body;
   };
+
+
   
   
   render() {
@@ -51,7 +52,7 @@ class App extends Component {
       </ul>
       </nav>
       <Route path="/" exact render={() => (<div>Welcome to Swipe it up </div>)} />
-      <Route path="/Login" exact render={() => (<LoginForm/>)} />
+      {/* <Route path="/Login" exact render={() => (<LoginForm/>)} /> */}
       <Route path="/Register" exact render={() => (<SignUpForm/>)} />
       <Route path="/Game" exact render={() => (<ManagerBoard/>)} />
       <Route path="/User" exact render={() => (<SignUpFormUser/>)} />
@@ -59,7 +60,10 @@ class App extends Component {
       <p>
       {/* Res: {this.state.response} */}
       </p>
+      {/* <LoginFormSocket/> */}
+  
       </header>
+      
       </div>
       </Router>
       );

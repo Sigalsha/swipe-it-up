@@ -55,7 +55,7 @@
 
 
 .players{
-  height: 250px;
+  height: 150px;
   width: 150px;
   background-color:yellow;
 }
@@ -117,4 +117,65 @@
   height: 150px;
   width: 150px;
   background-image: url('https://static.turbosquid.com/Preview/2014/05/19__17_27_04/G.jpg08f412c8-c093-4a71-a40b-709b81e3af0fOriginal.jpg')
+}
+
+.game-status{
+  height: 60px;
+  width: 150px;
+  background-color:magenta;
+}
+
+
+.touch {
+  height: 50px;
+  width: 50px;
+  background-color:gold;
+  position: absolute;
+  left:0;
+  top:0;
+}
+
+.podium {
+  margin-left: 14%;
+  height: 500px;
+  width: 600px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image:url("https://cdn3.vectorstock.com/i/1000x1000/47/87/podium-icon-cartoon-style-vector-13364787.jpg");
+  background-image:url("https://banner2.kisspng.com/20180328/flq/kisspng-podium-powerpoint-animation-presentation-clip-art-winner-5abb3125b57e43.4214932615222172537434.jpg");
+  background-image:url("https://mbtskoudsalg.com/images/olympics-clipart-pear.png");
+}
+
+.first-place{
+  display: flex;
+  background-color: blue;
+  width: 100px;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 10px;
+  position: relative;
+  left: 250px;
+  top: 350px;
+}
+.second-place{
+  display: flex;
+  background-color: blue;
+  width: 100px;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 10px;
+  position: relative;
+  left: 110px;
+  top: 300px;
+}
+.third-place{
+  display: flex;
+  background-color: blue;
+  width: 100px;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 10px;
+  position: relative;
+  left: 410px;
+  top: 287px;
 }

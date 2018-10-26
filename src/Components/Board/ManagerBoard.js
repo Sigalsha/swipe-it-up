@@ -1,4 +1,5 @@
 import {observer, inject} from 'mobx-react';
+// import {autorun, reaction, intercept} from 'mobx';
 import {observable} from 'mobx';
 import React, { Component } from 'react';
 import StartGameBtn  from '../Buttons/StartGameBtn';
@@ -6,8 +7,6 @@ import Players  from './Players';
 import Message  from '../Messages/Message';
 import { setInterval, setTimeout } from 'timers';
 import Target from "./Target"
-
-
 
 
 
@@ -25,10 +24,14 @@ class ManagerBoard extends Component {
   @observable showGameOver = false;
   
   componentDidMount () {
-    console.log(this.props.store.gameStatus);
+    
   } 
   startGame = async () => {
-    this.props.store.gameStatus = 'started';
+    if (this.props.store.gameState==='started'){
+      this.props.store.changeGameState('pending');
+      return;
+    }
+    this.props.store.changeGameState('started');
     this.showMe = false;
     setTimeout(this.toggleReady, 0);//ready
     setTimeout(this.toggleReady, 1000);
@@ -73,6 +76,8 @@ class ManagerBoard extends Component {
     messageGo = () => {
       return(
         <div className="mng-board">
+        <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
+        <StartGameBtn onClick={this.startGame}/>
         {this.showReady&&<Message content='Ready?!? 1,2,3' class='ready-message'/>}
         {this.showGo&&<Message content='Go' class='go-message'/>}
         {this.showTarget&&<Target/>}
@@ -87,8 +92,9 @@ class ManagerBoard extends Component {
       return (
         this.showMe?(<div className="mng-board">
         <div className='url-title'>url:http://localhost:3000/user</div>
-        <StartGameBtn onClick={this.startGame}/>
         <Players/>
+        <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
+        <StartGameBtn onClick={this.startGame}/>
         </div>):(this.messageGo())
         );
       }

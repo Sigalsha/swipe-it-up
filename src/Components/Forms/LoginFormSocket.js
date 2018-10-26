@@ -1,10 +1,5 @@
 import {observer, inject} from 'mobx-react';
 import React, { Component } from 'react';
-import ManagerBoard from '../Board/ManagerBoard';
-import { subscribeToTimer } from './api';
-import { chatMessage } from './api';
-
-
 
 @inject("store")
 @observer
@@ -12,38 +7,29 @@ class LoginFormSocket extends Component {
 
   state = {
     messageOut:'',
-    messageIn:'',
-    timestamp: 'no time stamp yet'
+    messageIn:''
   }
-
+  
   constructor(props) {
     super(props);
-    subscribeToTimer((err, timestamp) => this.setState({ 
-      timestamp 
-    }));
   }
-
-
+  
+  componentDidMount () {
+  }
+  
   handleChange = (event) => {
     this.setState({messageOut: event.target.value});
   }
-
+  
   handleClick = (event) => {
     event.preventDefault();
-    let prev = this.state.messageIn;
-    chatMessage(this.state.messageOut,
-      (err, msg) => {
-        this.setState({messageIn:prev + msg})
-      });
-    //console.log(this.state.messageIn);
+    this.props.store.chatMessage(this.state.messageOut); 
   }
-
-
+  
   render() {
     return (<div>
-      <ManagerBoard message={this.state.messageIn}/>
+      <div>{this.props.store.msg}</div>
       <div>Login
-      {/* This is the timer value: {this.state.timestamp} */}
       <form>
       <label>
       Name:<input type="text" name="name" value={this.state.messageOut} onChange={this.handleChange} />
@@ -53,6 +39,6 @@ class LoginFormSocket extends Component {
       </div></div>
       );
     }
-  }
+}
   
-  export default LoginFormSocket;
+export default LoginFormSocket;
