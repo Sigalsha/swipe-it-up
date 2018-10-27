@@ -30,3 +30,190 @@
     transform: rotate(360deg);
   }
 }
+
+.mng-board {
+  width: 800px;
+  height: 600px;
+  background-image: url('https://cdn4.vectorstock.com/i/1000x1000/89/38/cartoon-empty-school-college-classroom-vector-19808938.jpg');
+  margin-left:20%; 
+  margin-right:20%; 
+}
+
+.create-game-btn {
+  height: 50px;
+  width: 150px;
+  background-color:green;
+  font-size: 25px;
+}
+
+.start-game-btn {
+  height: 50px;
+  width: 150px;
+  background-color: blue;
+}
+
+
+.players{
+  height: 150px;
+  width: 150px;
+  background-color:yellow;
+}
+
+.url-title {
+  font-size: 200%;
+  background-color:teal;
+  color:white;
+}
+
+.go-message{
+  margin-left: 13%;
+  /* margin-right: 15%; */
+  height: 400px;
+  width: 600px;
+  background-color:blue;
+  color: black;
+  font-weight: bold;
+  font-size: 250px;
+}
+.ready-message{
+  margin-left: 13%;
+  /* margin-right: 15%; */
+  height: 400px;
+  width: 600px;
+  background-color:orangered;
+  color: black;
+  font-weight: bold;
+  font-size: 100px;
+}
+
+.game-end-message{
+  margin-left: 13%;
+  /* margin-right: 15%; */
+  height: 400px;
+  width: 600px;
+  background-color:red;
+  color: black;
+  font-weight: bold;
+  font-size: 100px;
+}
+.ready-next-message{
+  margin-left: 13%;
+  /* margin-right: 15%; */
+  height: 400px;
+  width: 600px;
+  background-color:gainsboro;
+  color: black;
+  font-weight: bold;
+  font-size: 80px;
+}
+
+.target {
+  left:720px;
+  top: 270px;
+  position: absolute;
+  height: 170px;
+  width: 100px;
+  background-repeat: no-repeat;
+  /* border-radius: 50%; */
+  /* object-fit: cover; */
+  /* object-fit: contain; */
+  /* opacity: 0.9; */
+  /* background-image: url('./pictures/teacher_female.svg'); */
+  background-image: url('./pictures/flat-shaded-business-woman.svg');
+
+}
+
+.game-status{
+  height: 60px;
+  width: 150px;
+  background-color:magenta;
+}
+
+
+.touch {
+  height: 50px;
+  width: 50px;
+  /* background-color:gold; */
+  position: absolute;
+  left:0;
+  bottom: 0;
+  font-size:100px;
+  transform: rotate(-27deg);
+  transform: skewY(0deg);
+  transform: scaleY(0.5);
+}
+
+.podium {
+  margin-left: 14%;
+  height: 500px;
+  width: 600px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image:url("https://cdn3.vectorstock.com/i/1000x1000/47/87/podium-icon-cartoon-style-vector-13364787.jpg");
+  background-image:url("https://banner2.kisspng.com/20180328/flq/kisspng-podium-powerpoint-animation-presentation-clip-art-winner-5abb3125b57e43.4214932615222172537434.jpg");
+  background-image:url("https://mbtskoudsalg.com/images/olympics-clipart-pear.png");
+}
+
+.first-place{
+  display: flex;
+  background-color: blue;
+  width: 100px;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 10px;
+  position: relative;
+  left: 250px;
+  top: 350px;
+}
+.second-place{
+  display: flex;
+  background-color: blue;
+  width: 100px;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 10px;
+  position: relative;
+  left: 110px;
+  top: 300px;
+}
+.third-place{
+  display: flex;
+  background-color: blue;
+  width: 100px;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 10px;
+  position: relative;
+  left: 410px;
+  top: 287px;
+}
+
+.plane {
+  transform: rotate(-30deg);
+  color:rgb(211, 199, 199);
+  font-size: 50px;
+  left:720px;
+  top: 620px;
+  position: absolute;
+}
+
+.targetTransperent {
+  left:720px;
+  top: 270px;
+  position: absolute;
+  height: 170px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid red ;
+  /* background-image: url('./pictures/flat-shaded-business-woman.svg'); */
+  background-color: transparent;
+}
+
+.shot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: blue;
+}
+
