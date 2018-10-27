@@ -24,9 +24,12 @@ class ManagerBoard extends Component {
   @observable showGameOver = false;
   
   componentDidMount () {
-    
+    this.props.store.socket.on('update state', () => { //from server
+      console.log('update state');
+    });
+
   } 
-  startGame = async () => {
+  startGame = () => {
     if (this.props.store.gameState==='started'){
       this.props.store.changeGameState('pending');
       return;
@@ -38,8 +41,8 @@ class ManagerBoard extends Component {
     setTimeout(this.toggleGo, 1000);//go
     setTimeout(this.toggleGo, 2700);
     setTimeout(this.toggleTarget, 2700);//target
-    setTimeout(this.toggleTarget, 5700);
-    setTimeout(this.toggleGameEnd, 5700);//time is up
+    setTimeout(this.toggleTarget, 6700);
+    setTimeout(this.toggleGameEnd, 6700);//time is up
     setTimeout(this.toggleGameEnd, 7700);
     setTimeout(this.toggleGetShot, 7700);//wanna see your shot
     setTimeout(this.toggleGetShot, 9500);
@@ -49,6 +52,7 @@ class ManagerBoard extends Component {
     setTimeout(this.toggleGetNext, 16500);
     setTimeout(this.toggleGameOver, 16500);
     setTimeout(this.toggleGameOver, 18500);
+    //setTimeout(this.props.store.changeGameState('pending'), 20500);
   }
   
   toggleReady = () => {
