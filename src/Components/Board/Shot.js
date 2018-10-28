@@ -13,7 +13,7 @@ class Shot extends Component {
     console.log("left"+left);
     return (
       <div className="shot" style={{position: 'absolute', top, left, backgroundColor:this.background}}>
-      {this.props.store.shot.userName} 
+      {this.props.store.userName} 
       </div>
       );
     }

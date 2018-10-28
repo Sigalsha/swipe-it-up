@@ -5,7 +5,8 @@ var io = require('socket.io')(http);
 let gameProperties = {
   users :  [],
   usersCnt : 0,
-  gameState : 'pending'
+  gameState : 'pending',
+  shots:[]
 }
 
 io.on('connection', (socket) => {
@@ -21,6 +22,12 @@ io.on('connection', (socket) => {
     let obj = {name:userName,id:''};
     gameProperties.users.push(obj);
     io.emit('new user', gameProperties.users);
+  });
+
+  socket.on('user shot', (shot) => {
+    gameProperties.shots.push(shot);
+    console.log('shot: '+JSON.stringify(gameProperties.shots[gameProperties.shots.length-1]));
+    io.emit('user shot', gameProperties.shots[gameProperties.shots.length-1]);
   });
 
   socket.on('update state', (state) => {
@@ -50,9 +57,9 @@ console.log('listening on port ', port);
 
 // let usersCnt = 0;
 
-// // app.get('/api/hello', (req, res) => {
-// //   res.send({ express: 'Hello From Express' });
-// // });
+app.get('/api/hello', (req, res) => {
+  res.send({ express: 'Hello From Express' });
+});
 
 // // app.get('/', function(req, res){
 // //   res.sendFile(__dirname + '/public/index.html');
