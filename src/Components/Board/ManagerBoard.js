@@ -7,8 +7,8 @@ import Players  from './Players';
 import Message  from '../Messages/Message';
 import { setInterval, setTimeout } from 'timers';
 import Target from "./Target"
-
-
+import Podium from "../Messages/Podium"
+import ScoreTable from "../Messages/ScoreTable"
 
 @inject("store")
 @observer
@@ -27,7 +27,7 @@ class ManagerBoard extends Component {
     this.props.store.socket.on('update state', () => { //from server
       console.log('update state');
     });
-
+    
   } 
   startGame = () => {
     if (this.props.store.gameState==='started'){
@@ -58,49 +58,57 @@ class ManagerBoard extends Component {
   toggleReady = () => {
     this.showReady = !this.showReady;
   }
+
   toggleGo = () => {
     this.showGo = !this.showGo;
-  }  
+  }
+
   toggleTarget = () => {
     this.showTarget = !this.showTarget;
-  }  
+  }
+
   toggleGameEnd = () => {
     this.showGameEnd = !this.showGameEnd;
-  }  
+  }
+
   toggleGetShot = () => {
     this.showGetShot = !this.showGetShot;
-  }  
+  }
+
   toggleGetNext = () => {
     this.showReadyNext = !this.showReadyNext;
-  }  
+  }
+
   toggleGameOver = () => {
     this.showGameOver = !this.showGameOver;
   }  
-
-    messageGo = () => {
-      return(
-        <div className="mng-board">
-        <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
-        <StartGameBtn onClick={this.startGame}/>
-        {this.showReady&&<Message content='Ready?!? 1,2,3' class='ready-message'/>}
-        {this.showGo&&<Message content='Go' class='go-message'/>}
-        {this.showTarget&&<Target/>}
-        {this.showGameEnd&&<Message content='Time Is Up!' class='game-end-message'/>}
-        {this.showGetShot&&<Message content='Wanna See Your Shot?' class='ready-message'/>}
-        {this.showReadyNext&&<Message content='Get ready for the next one!!!' class='ready-next-message'/>}
-        {this.showGameOver&&<Message content='Game Over!!!' class='game-end-message'/>}
-        </div>)
+  
+  messageGo = () => {
+    return(
+      <div className="mng-board">
+      <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
+      <StartGameBtn onClick={this.startGame}/>
+      {this.showReady&&<Message content='Ready?!? 1,2,3' class='ready-message'/>}
+      {this.showGo&&<Message content='Go' class='go-message'/>}
+      {this.showTarget&&<Target/>}
+      {this.showGameEnd&&<Message content='Time Is Up!' class='game-end-message'/>}
+      {this.showGetShot&&<Message content='Wanna See Your Shot?' class='ready-message'/>}
+      {this.showReadyNext&&<Message content='Get ready for the next one!!!' class='ready-next-message'/>}
+      {this.showGameOver&&<Message content='Game Over!!!' class='game-end-message'/>}
+      {/* {this.showGameOver&&<Podium/>} */}
+      </div>)
     }
     
     render() {
       return (
         this.showMe?(<div className="mng-board">
         <div className='url-title'>url:http://localhost:3000/user</div>
-        <Players/>
+        {/* <Players/> */}
+        {/* <ScoreTable/> */}
+        {/* <Podium/> */}
         <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
         <StartGameBtn onClick={this.startGame}/>
-        </div>):(this.messageGo())
-        );
+        </div>):(this.messageGo()));
       }
     }
     export default ManagerBoard;

@@ -33,7 +33,7 @@
 
 .mng-board {
   width: 800px;
-  height: 600px;
+  height: 580px;
   background-image: url('https://cdn4.vectorstock.com/i/1000x1000/89/38/cartoon-empty-school-college-classroom-vector-19808938.jpg');
   margin-left:20%; 
   margin-right:20%; 
@@ -77,13 +77,39 @@
 }
 .ready-message{
   margin-left: 13%;
-  /* margin-right: 15%; */
   height: 400px;
   width: 600px;
   background-color:orangered;
   color: black;
   font-weight: bold;
   font-size: 100px;
+}
+
+.score-table {
+  margin-left: 13%;
+  height: 400px;
+  width: 600px;
+  background-color:mediumspringgreen;
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+}
+.score-table-headline {
+  margin-left:120px;
+  display: flex;
+}
+.score-table-headline-item {
+  background-color: blue;
+  border: 2px solid black;
+  width:25%;
+}
+.score-table-record {
+  margin-left:120px;
+  display: flex;
+}
+.score-table-item {
+  border: 2px solid black;
+  width:25%;
 }
 
 .game-end-message{
@@ -114,13 +140,7 @@
   height: 170px;
   width: 100px;
   background-repeat: no-repeat;
-  /* border-radius: 50%; */
-  /* object-fit: cover; */
-  /* object-fit: contain; */
-  /* opacity: 0.9; */
-  /* background-image: url('./pictures/teacher_female.svg'); */
   background-image: url('./pictures/flat-shaded-business-woman.svg');
-
 }
 
 .game-status{
