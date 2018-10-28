@@ -33,6 +33,9 @@ io.on('connection', (socket) => {
 
   socket.on('update state', (state) => {
     console.log('state: '+state);
+    if (gameProperties.gameState === state){
+      return;
+    }
     gameProperties.gameState = state
     io.emit('update state', gameProperties.gameState);
   });

@@ -3,7 +3,7 @@ import { gameProperties, updateGameStatus } from '../api';
 import openSocket from 'socket.io-client';
 
 class GameStore {
-    @observable userName = 'user1';
+    @observable userName = 'user-1';
     @observable gameState = 'pending';
     @observable games = [];
     @observable users = [];
@@ -18,7 +18,6 @@ class GameStore {
     socket = openSocket('http://localhost:5000');
     
     constructor() {
-        this.shots[0]=this.shot;
         this.socket.on('chat message', (d) => { //from server
             this.msg = d;
         }); 
@@ -119,11 +118,11 @@ class GameStore {
     });
 }
 
-changeGameState = (state) => {updateGameStatus(state,
-    (err, properties) => {
-        this.gameState = properties.gameState;
-    });
-}
+// changeGameState = (state) => {updateGameStatus(state,
+//     (err, properties) => {
+//         this.gameState = properties.gameState;
+//     });
+// }
 
 addUser(user) {
     this.socket.emit('new user', user); //to server
@@ -133,7 +132,7 @@ chatMessage(msg) {
     this.socket.emit('chat message', msg); //to server
 }
 
-updateGameStatus(status, cb) {
+updateGameStatus(status) {
     this.socket.emit('update state', status); //to server
 }
 }
