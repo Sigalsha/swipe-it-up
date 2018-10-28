@@ -1,4 +1,5 @@
 import {observer, inject} from 'mobx-react';
+// import {autorun, reaction, intercept} from 'mobx';
 import {observable} from 'mobx';
 import React, { Component } from 'react';
 import StartGameBtn  from '../Buttons/StartGameBtn';
@@ -6,8 +7,6 @@ import Players  from './Players';
 import Message  from '../Messages/Message';
 import { setInterval, setTimeout } from 'timers';
 import Target from "./Target"
-
-
 
 
 
@@ -25,18 +24,25 @@ class ManagerBoard extends Component {
   @observable showGameOver = false;
   
   componentDidMount () {
-    console.log(this.props.store.gameStatus);
+    this.props.store.socket.on('update state', () => { //from server
+      console.log('update state');
+    });
+
   } 
-  startGame = async () => {
-    this.props.store.gameStatus = 'started';
+  startGame = () => {
+    if (this.props.store.gameState==='started'){
+      this.props.store.changeGameState('pending');
+      return;
+    }
+    this.props.store.changeGameState('started');
     this.showMe = false;
     setTimeout(this.toggleReady, 0);//ready
     setTimeout(this.toggleReady, 1000);
     setTimeout(this.toggleGo, 1000);//go
     setTimeout(this.toggleGo, 2700);
     setTimeout(this.toggleTarget, 2700);//target
-    setTimeout(this.toggleTarget, 5700);
-    setTimeout(this.toggleGameEnd, 5700);//time is up
+    setTimeout(this.toggleTarget, 6700);
+    setTimeout(this.toggleGameEnd, 6700);//time is up
     setTimeout(this.toggleGameEnd, 7700);
     setTimeout(this.toggleGetShot, 7700);//wanna see your shot
     setTimeout(this.toggleGetShot, 9500);
@@ -46,6 +52,7 @@ class ManagerBoard extends Component {
     setTimeout(this.toggleGetNext, 16500);
     setTimeout(this.toggleGameOver, 16500);
     setTimeout(this.toggleGameOver, 18500);
+    //setTimeout(this.props.store.changeGameState('pending'), 20500);
   }
   
   toggleReady = () => {
@@ -73,6 +80,8 @@ class ManagerBoard extends Component {
     messageGo = () => {
       return(
         <div className="mng-board">
+        <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
+        <StartGameBtn onClick={this.startGame}/>
         {this.showReady&&<Message content='Ready?!? 1,2,3' class='ready-message'/>}
         {this.showGo&&<Message content='Go' class='go-message'/>}
         {this.showTarget&&<Target/>}
@@ -87,8 +96,9 @@ class ManagerBoard extends Component {
       return (
         this.showMe?(<div className="mng-board">
         <div className='url-title'>url:http://localhost:3000/user</div>
-        <StartGameBtn onClick={this.startGame}/>
         <Players/>
+        <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
+        <StartGameBtn onClick={this.startGame}/>
         </div>):(this.messageGo())
         );
       }

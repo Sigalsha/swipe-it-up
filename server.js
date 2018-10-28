@@ -2,24 +2,40 @@ var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-let usersCnt = 0;
+let gameProperties = {
+  users :  [],
+  usersCnt : 0,
+  gameState : 'pending'
+}
 
 io.on('connection', (socket) => {
-  console.log('a user connected');
-  
-  usersCnt++;
-  socket.emit('new user', `welcome`); 
-  //   socket.broadcast.emit('new user',`${usersCnt} are connected`);
+  //console.log('a user connected');
+  gameProperties.usersCnt++;
 
-  //   // when chat message event sends we console log the msg
+  socket.on('game properties', () => {
+    socket.emit('game properties', gameProperties);
+  });
+
+  socket.on('new user', (userName) => {
+    console.log(`new user joined ${userName}`);
+    let obj = {name:userName,id:''};
+    gameProperties.users.push(obj);
+    io.emit('new user', gameProperties.users);
+  });
+
+  socket.on('update state', (state) => {
+    console.log('state: '+state);
+    gameProperties.gameState = state
+    io.emit('update state', gameProperties.gameState);
+  });
+
   socket.on('chat message', (msg) => {
     console.log('client send ', msg);
-    socket.emit('chat message', msg);
- 
+    io.emit('chat message', msg); //it should be io and no socket!!!!!
   });
   
   socket.on('subscribeToTimer', (interval) => {
-    console.log('client is subscribing to timer with interval ', interval);
+    // console.log('client is subscribing to timer with interval ', interval);
     setInterval(() => {
       socket.emit('subscribeToTimer', new Date());
     }, interval);
