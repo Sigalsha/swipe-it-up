@@ -4,21 +4,21 @@ import './App.css';
 import { observer, inject } from 'mobx-react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import LoginFormSocket from './Components/Forms/LoginFormSocket';
+// import LoginFormSocket from './Components/Forms/LoginFormSocket';
+import Home from './Components/Home';
 import SignUpForm from './Components/Forms/SignUpForm';
-import LoginForm from './Components/Forms/LoginForm';
+// import LoginForm from './Components/Forms/LoginForm';
 import ManagerBoard from './Components/Board/ManagerBoard';
 import SignUpFormUser from './Components/Forms/SignUpFormUser';
-import plane_logo from './images/blue.png'
-
-
+import Classroom from './images/classroom.svg'
 
 @inject("store")
 @observer
 class App extends Component {
   state = {
     response: '',
-    input: ''
+    input: '',
+
   };
 
   componentDidMount() {
@@ -36,44 +36,44 @@ class App extends Component {
     return body;
   };
 
+  // toggleImage = () => {
+  //   if (this.state.image){
+  //     this.setState({image: false})
+  //   } else {
+  //     this.setState({image: true})
+  //   }
+  // }
 
-  
-  
+ 
+
+
+
   render() {
     console.log("res:" + this.state.response);
     return (
       <Router>
-      <div className="App">
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <ul className="navbar-header nav navbar-nav">
-      <li><Link className="navbar-brand" to="/"></Link></li>
-      <li><Link className="navbar-brand" to="/Login">Log in</Link></li>
-      <li><Link className="navbar-brand" to="/Register">Sign Up</Link></li>
-      </ul>
-      </nav>
-      <Route path="/" exact render={() => (<div>Welcome to Swipe it up </div>)} />
-      {/* <Route path="/Login" exact render={() => (<LoginForm/>)} /> */}
-      <Route path="/Register" exact render={() => (<SignUpForm/>)} />
-      <Route path="/Game" exact render={() => (<ManagerBoard/>)} />
-      <Route path="/User" exact render={() => (<SignUpFormUser/>)} />
-      <header className="">
-      <p>
-      {/* Res: {this.state.response} */}
-      </p>
-      {/* <LoginFormSocket/> */}
-      
-      </header>
-      
-      </div>
+        <div className="App">
+          <Navbar />
+          <Route path="/" exact render={() => ( <Home src={Classroom}/>)} />
+          <Route path="/Register" exact render={() => (<SignUpForm src={Classroom} />)} />
+          <Route path="/Game" exact render={() => (<ManagerBoard src={Classroom} />)} />
+          <Route path="/User" exact render={() => (<SignUpFormUser src={Classroom} />)} />
+          {/* <Route path="/Login" exact render={() => (<LoginForm/>)} /> */}
+        </div>
       </Router>
     );
   }
 }
 
-// const NavBar = ({src }) => {
-//   return (
 
-//   )
-// }
+const Navbar = () => {
+  return (
+    <nav className="navbar">
+      <Link className="nav-item" to="/" >Swipe It Up</Link>
+      <Link className="nav-item" to="/Register">Sign Up</Link>
+      <Link className="nav-item" to="/credits">Credits</Link>
+    </nav>
+  )
+}
 
 export default App;

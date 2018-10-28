@@ -1,5 +1,5 @@
-import {observer, inject} from 'mobx-react';
-import {observable} from 'mobx';
+import { observer, inject } from 'mobx-react';
+import { observable } from 'mobx';
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import StartGameBtn from './StartGameBtn';
@@ -11,16 +11,20 @@ class CreateGameBtn extends Component {
 
   @observable showMe = true
 
-  createGame = () => { 
+  createGame = () => {
     this.showMe = false;
   }
 
   render() {
     return (
-      this.showMe ?<div className="create-game-btn" onClick={this.createGame}>
-      <Link className="" to="/Game">Create Game</Link>
-      </div>
-      : <ManagerBoard/>
-    )}
+      this.showMe ?
+        (
+          <div className="create-game-btn" onClick={this.createGame}>
+            <Link id="link-to-game" to="/Game">Create Game</Link>
+          </div>
+        )
+        : (<ManagerBoard />)
+    )
   }
-  export default CreateGameBtn;
+}
+export default CreateGameBtn;

@@ -44,23 +44,6 @@ class GameStore {
     
     //check if player touched close to the startIcon or not (icon size = 50px)
     @action checkStartPoint = (x, y) => {
-<<<<<<< HEAD
-      if ( (x <= this.playerIcon[x] + 70) && (y <= this.playerIcon[y] + 70) ) {
-          this.shot.startPoint = true;
-          return;
-      } 
-      this.shot.startPoint = false;
-      return;
-    } //check if player touched close to the startIcon or not (icon size = 50px)
-
-    @action addShot = (x, y) => {
-        console.log('add shot');
-        this.shot = {...this.shot,x:x,y:y};
-        console.log('add shot:'+'x:'+this.shot[x]+'y:'+this.shot[y]);
-        //send to socket.io
-        this.addDistance();
-        //send to socket.io
-=======
         if ( (x <= this.playerIcon.x + 70) && (y <= this.playerIcon.y + 70) ) {
             this.shot.startPoint = true;
             return;
@@ -78,7 +61,6 @@ class GameStore {
     @action addShot = (x1, y1) => {
         this.shot = {...this.shot,x:x1,y:y1};
         console.log('add shot:'+'x:'+this.shot['x']+'y:'+this.shot['y']);
->>>>>>> f79f1de27b6ab521e86c5d6e81086eb714baf921
     } //get the shot's (x,y) from Dart component
     
     @computed get getShotX()  {
@@ -94,34 +76,15 @@ class GameStore {
         let shot = { ...this.shot }
         let xSum = Math.pow((target.x - shot.x), 2);
         let ySum = Math.pow((target.y - shot.y), 2);
-<<<<<<< HEAD
-        let distance = Math.sqrt(xSum + ySum)
-        this.distanceTemp = distance
-=======
         let distanceCalc = Math.sqrt(xSum + ySum);
         this.shot = {...this.shot,distance:distanceCalc}
         //this.allDistances.push(distance) 
->>>>>>> f79f1de27b6ab521e86c5d6e81086eb714baf921
     } 
     
     getSum (total, num) {
         return total + num;
     }
-<<<<<<< HEAD
-
-    calculateScore () {
-        let startPoint = {...this.shot.startPoint}
-        let distance = this.distanceTemp
-
-        let score = this.score
-        if (!startPoint){
-            score 
-        }
-    }
-
-=======
     
->>>>>>> f79f1de27b6ab521e86c5d6e81086eb714baf921
     getScore() {
         let score = this.allDistances.reduce(this.getSum)
         //should add logic that checks if the player miss the startIcon,

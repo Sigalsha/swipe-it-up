@@ -3,7 +3,7 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 let gameProperties = {
-  users :  [{user}, {user}, {user}, {user}],
+  users :  [],
   usersCnt : 0,
   gameState : 'pending',
   shots:[]

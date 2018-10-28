@@ -1,19 +1,21 @@
-import {observer, inject} from 'mobx-react';
+import { observer, inject } from 'mobx-react';
 // import {autorun, reaction, intercept} from 'mobx';
-import {observable} from 'mobx';
+import { observable } from 'mobx';
 import React, { Component } from 'react';
-import StartGameBtn  from '../Buttons/StartGameBtn';
-import Players  from './Players';
-import Message  from '../Messages/Message';
+import StartGameBtn from '../Buttons/StartGameBtn';
+import Players from './Players';
+import Message from '../Messages/Message';
 import { setInterval, setTimeout } from 'timers';
 import Target from "./Target"
-
-
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
+library.add(faArrowAltCircleRight)
 
 @inject("store")
 @observer
 class ManagerBoard extends Component {
-  
+
   @observable showMe = true;
   @observable showReady = false;
   @observable showGo = false;
@@ -22,15 +24,15 @@ class ManagerBoard extends Component {
   @observable showGetShot = false;
   @observable showReadyNext = false;
   @observable showGameOver = false;
-  
-  componentDidMount () {
+
+  componentDidMount() {
     this.props.store.socket.on('update state', () => { //from server
       console.log('update state');
     });
 
-  } 
+  }
   startGame = () => {
-    if (this.props.store.gameState==='started'){
+    if (this.props.store.gameState === 'started') {
       this.props.store.changeGameState('pending');
       return;
     }
@@ -54,53 +56,68 @@ class ManagerBoard extends Component {
     setTimeout(this.toggleGameOver, 18500);
     //setTimeout(this.props.store.changeGameState('pending'), 20500);
   }
-  
+
   toggleReady = () => {
     this.showReady = !this.showReady;
   }
   toggleGo = () => {
     this.showGo = !this.showGo;
-  }  
+  }
   toggleTarget = () => {
     this.showTarget = !this.showTarget;
-  }  
+  }
   toggleGameEnd = () => {
     this.showGameEnd = !this.showGameEnd;
-  }  
+  }
   toggleGetShot = () => {
     this.showGetShot = !this.showGetShot;
-  }  
+  }
   toggleGetNext = () => {
     this.showReadyNext = !this.showReadyNext;
-  }  
+  }
   toggleGameOver = () => {
     this.showGameOver = !this.showGameOver;
-  }  
+  }
 
-    messageGo = () => {
-      return(
+  messageGo = () => {
+    return (
+      <div className="mng-board">
+        <div className="game-status">Game status:<br />{this.props.store.gameState}</div>
+        <StartGameBtn onClick={this.startGame} />
+        {this.showReady && <Message content='Ready?!? 1,2,3' class='ready-message' />}
+        {this.showGo && <Message content='Go' class='go-message' />}
+        {this.showTarget && <Target />}
+        {this.showGameEnd && <Message content='Time Is Up!' class='game-end-message' />}
+        {this.showGetShot && <Message content='Wanna See Your Shot?' class='ready-message' />}
+        {this.showReadyNext && <Message content='Get ready for the next one!!!' class='ready-next-message' />}
+        {this.showGameOver && <Message content='Game Over!!!' class='game-end-message' />}
+      </div>)
+  }
+
+  render() {
+    return (
+      this.showMe ? (
         <div className="mng-board">
-        <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
-        <StartGameBtn onClick={this.startGame}/>
-        {this.showReady&&<Message content='Ready?!? 1,2,3' class='ready-message'/>}
-        {this.showGo&&<Message content='Go' class='go-message'/>}
-        {this.showTarget&&<Target/>}
-        {this.showGameEnd&&<Message content='Time Is Up!' class='game-end-message'/>}
-        {this.showGetShot&&<Message content='Wanna See Your Shot?' class='ready-message'/>}
-        {this.showReadyNext&&<Message content='Get ready for the next one!!!' class='ready-next-message'/>}
-        {this.showGameOver&&<Message content='Game Over!!!' class='game-end-message'/>}
-        </div>)
-    }
-    
-    render() {
-      return (
-        this.showMe?(<div className="mng-board">
-        <div className='url-title'>url:http://localhost:3000/user</div>
-        <Players/>
-        <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
-        <StartGameBtn onClick={this.startGame}/>
-        </div>):(this.messageGo())
-        );
-      }
-    }
-    export default ManagerBoard;
+          <LinkToCopy />
+          <Players />
+          {/* <div className="game-status">Game status:<br />{this.props.store.gameState}</div> */}
+          <StartGameBtn onClick={this.startGame} />
+        </div>
+      ) : (this.messageGo())
+    );
+  }
+}
+
+const LinkToCopy = () => {
+  return (
+    <div className='url-title'>
+      <span>Copy Link</span>
+      <FontAwesomeIcon className="arrow-icon" icon="arrow-alt-circle-right" />
+      <span id="url-str">http://localhost:3000/user</span>
+      <FontAwesomeIcon className="arrow-icon" icon="arrow-alt-circle-right" />
+      <span>send to your players</span>
+    </div>
+  )
+}
+export default ManagerBoard;
+

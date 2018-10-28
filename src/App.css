@@ -1,52 +1,176 @@
 * {
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'Inconsolata', monospace;
 }
 
 .App {
   text-align: center;
-  font-family: 'Fira Sans', sans-serif;
+  background-color: #54a0ff;
+  height: 900px;
 }
 
-.navbar-brand img {
-  height: 400%;
-  width: 500%;
-  margin-right: 25%;
-  border: 3px solid red;
+.app-header{
+  font-size: 5em;
+  font-weight: bold;
+  padding-top: 2%;
+  color: #222f3e;
 }
+
+.classroom {
+  width: 100%;
+  height: 400px;
+}
+
+.navbar {
+  background-color: #222f3e;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+.nav-item:hover {
+  color: #3742fa;
+  text-decoration: none;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  /* border: 1px solid #3742fa;  */
+}
+
+.form {
+  padding: 2%;
+  margin-top: 2%;
+  font-size: 1.2em;
+}
+
+.input {
+  width: 60%;
+  text-align: center;
+  margin-right: 0.5%;
+  background-color: transparent;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px; 
+}
+
+.sign-header {
+  width: 20%;
+  margin-right: 2%;
+  font-weight: 550;
+}
+
+.signBtn {
+  width: 10%;
+  border: 1px solid  #3742fa;
+  border-radius: 5%;
+  background-color: #3742fa;
+}
+
+.signBtn:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
 
 .mng-board {
-  width: 800px;
-  height: 580px;
-  background-image: url('https://cdn4.vectorstock.com/i/1000x1000/89/38/cartoon-empty-school-college-classroom-vector-19808938.jpg');
-  margin-left:20%; 
-  margin-right:20%; 
+  height: 550px;
+  background-image: url('./images/class-game.png');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 
 .create-game-btn {
-  height: 50px;
-  width: 150px;
-  background-color:green;
-  font-size: 25px;
+  width: 15%;
+  height: 150%;
+  border: 1px solid  #3742fa;
+  border-radius: 5%;
+  background-color: #3742fa;
+  padding: 2%;
+  margin-top: 5%;
+  color: black;
+  display: flex;
+  justify-content: center;
+  margin-left: 43.5%;
 }
 
-.start-game-btn {
-  height: 50px;
-  width: 150px;
-  background-color: blue;
+#link-to-game{
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
 }
 
-
-.players{
-  height: 150px;
-  width: 150px;
-  background-color:yellow;
+#link-to-game:hover{
+  cursor: pointer;
+  font-weight: bold;
 }
 
 .url-title {
   font-size: 200%;
-  background-color:teal;
-  color:white;
+  font-weight: 500;
+  font-size: 1.6em;
+  padding: 1%;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #54a0ff;
+  opacity: 0.8;
+  color: black;
 }
+
+.arrow-icon {
+  margin-top: 0.5%;
+}
+
+#url-str:hover {
+  font-weight: bold;
+}
+
+.start-game-btn {
+  margin-top: 3%;
+  width: 20%;
+  margin-left: 40%;
+  text-align: center;
+  padding: 0.5%;
+  font-size: 1.4em;
+  border: 1px solid  #3742fa;
+  border-radius: 5%;
+  background-color: #3742fa;
+}
+.start-game-btn:hover {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* .signBtn {
+  width: 10%;
+  border: 1px solid  #3742fa;
+  border-radius: 5%;
+  background-color: #3742fa;
+}
+
+
+
+.players{
+  font-size: 1.4em;
+  height: 40%;
+  width: 20%;
+  padding: 2%;
+  margin-left: 40%;
+  margin-top: 3%;
+  background-color: #5352ed;
+  opacity: 0.92;
+  border: 5px solid #222f3e;
+  border-radius: 5%;
+}
+#players-header {
+  font-weight: bold;
+  font-size: 1.05em;
+}
+
+
 
 .go-message{
   margin-left: 13%;
@@ -58,6 +182,7 @@
   font-weight: bold;
   font-size: 250px;
 }
+
 .ready-message{
   margin-left: 13%;
   /* margin-right: 15%; */
@@ -79,6 +204,7 @@
   font-weight: bold;
   font-size: 100px;
 }
+
 .ready-next-message{
   margin-left: 13%;
   /* margin-right: 15%; */
@@ -97,11 +223,6 @@
   height: 170px;
   width: 100px;
   background-repeat: no-repeat;
-  /* border-radius: 50%; */
-  /* object-fit: cover; */
-  /* object-fit: contain; */
-  /* opacity: 0.9; */
-  /* background-image: url('./pictures/teacher_female.svg'); */
   background-image: url('./pictures/flat-shaded-business-woman.svg');
 
 }
@@ -200,3 +321,35 @@
   background-color: blue;
 }
 
+@media screen and (max-width: 600px){
+  .classroom {
+    min-width: 250px;
+    max-width: 400px;
+    max-height: 300px;
+  }
+
+  .app-header {
+    font-size: 3.5em;
+    max-height: 200px;
+    padding:none;
+  }
+  /* .form{
+    
+  } */
+  .navbar {
+    justify-content: space-between;
+  }
+}
+
+@media screen and (max-width: 350px){
+  .classroom {
+    min-width: 250px;
+    max-width: 400px;
+    max-height: 200px;
+  }
+  .app-header {
+    font-size: 3em;
+    max-height: 200px;
+    padding:none;
+  }
+}
