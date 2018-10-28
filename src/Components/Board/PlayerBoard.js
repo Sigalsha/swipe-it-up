@@ -126,7 +126,7 @@ class PlayerBoard extends Component {
       {this.showReadyNext&&<Message content='Get Ready For The Next One!!!' class='ready-next-message'/>}
       {this.showGameOver&&<Message content='Game Over!!!' class='game-end-message'/>}
       {/* {this.showPrePodium&&<Message content="Let's See Who Won!" class='ready-next-message'/>} */}
-      {/* <Podium/> */}
+      
       <Shot/>
       </div>
       );

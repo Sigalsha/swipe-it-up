@@ -48,15 +48,13 @@ class Plane extends Component {
     }
     
 
-    
     render() {
         //console.log( `Clientend x:${this.clientEnd.x} y:${this.clientEnd.y}`);
         var left = this.clientEnd.x + 'px';
         var top = this.clientEnd.y + 'px';
         return (
             <FontAwesomeIcon 
-            onTouchStart={this.start} 
-            // onTouchMove={this.move}  
+            onTouchStart={this.start}  
             onTouchEnd={this.end}  
             className="plane" icon="paper-plane" 
             style={{position: 'absolute', left, top}}
