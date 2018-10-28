@@ -6,47 +6,7 @@ let gameProperties = {
   users :  [{user}, {user}, {user}, {user}],
   usersCnt : 0,
   gameState : 'pending',
-  shots: [],
-  // distance: 0,
-  
-   
-
-}
-
-io.on('new distance', (distance) => {
-  let distanceUser = distance.userName //distance will include username + distance
-  let user = this.gameProperties.users.filter()
-  gameProperties.distance = currentDistance
-  
-  io.emit('new score', gameProperties.distance)
-})
-
-
-socket.on('user shot', (shot) => {
-  gameProperties.shots.push(shot);
-  console.log('shot: '+JSON.stringify(gameProperties.shots[gameProperties.shots.length-1]));
-  //shot - username, startPoint, x,y, distance}  
-  let shot = shot
-  let userShot = shot.userName
-  let user = this.gameProperties.users.filter(user => user.userName === userShot);
-  console.log('user filtered by userName')
-  user["shot"] = shot
-  this.gameProperties.users[]
-  let score = this.calculateScore(user)
-  io.emit('user shot', gameProperties.shots[gameProperties.shots.length-1]);
-});
-
-calculateScore(user) {
-  let score = 0
-  let startPoint = user.shot.startPoint
-  let recudePoints = 0
-  let distance = user.shot.distance
-  if (!startPoint){
-    recudePoints = 100
-  } 
-  score = recudePoints + distance
-  return score
-
+  shots:[]
 }
 
 io.on('connection', (socket) => {
@@ -62,6 +22,12 @@ io.on('connection', (socket) => {
     let obj = {name:userName,id:'', shot: {}, score: 0};
     gameProperties.users.push(obj);
     io.emit('new user', gameProperties.users);
+  });
+
+  socket.on('user shot', (shot) => {
+    gameProperties.shots.push(shot);
+    console.log('shot: '+JSON.stringify(gameProperties.shots[gameProperties.shots.length-1]));
+    io.emit('user shot', gameProperties.shots[gameProperties.shots.length-1]);
   });
 
   socket.on('update state', (state) => {
@@ -91,9 +57,9 @@ console.log('listening on port ', port);
 
 // let usersCnt = 0;
 
-// // app.get('/api/hello', (req, res) => {
-// //   res.send({ express: 'Hello From Express' });
-// // });
+app.get('/api/hello', (req, res) => {
+  res.send({ express: 'Hello From Express' });
+});
 
 // // app.get('/', function(req, res){
 // //   res.sendFile(__dirname + '/public/index.html');
