@@ -13,8 +13,8 @@ class GameStore {
 
     //shot => include username, startpoint(if player touched close to the startIcon),
     //and the shot (x,y)
-    // @observable distanceTemp = 0 //only distance from one shot to the target
-    @observable allDistances = [] //all the distances between the shots and the targets 
+    @observable shot = {userName:'gogo', startPoint: false, x: 150, y: 150, distance:0 }
+    score = 0
 
     socket = openSocket('http://localhost:5000');
 
@@ -54,7 +54,9 @@ class GameStore {
         console.log('add shot');
         this.shot = {...this.shot,x:x,y:y};
         console.log('add shot:'+'x:'+this.shot[x]+'y:'+this.shot[y]);
+        //send to socket.io
         this.addDistance();
+        //send to socket.io
     } //get the shot's (x,y) from Dart component
 
     @computed get getShotX()  {
@@ -71,12 +73,21 @@ class GameStore {
         let xSum = Math.pow((target.x - shot.x), 2);
         let ySum = Math.pow((target.y - shot.y), 2);
         let distance = Math.sqrt(xSum + ySum)
-        // this.distanceTemp = distance
-        this.allDistances.push(distance) 
+        this.distanceTemp = distance
     } 
 
     getSum (total, num) {
         return total + num;
+    }
+
+    calculateScore () {
+        let startPoint = {...this.shot.startPoint}
+        let distance = this.distanceTemp
+
+        let score = this.score
+        if (!startPoint){
+            score 
+        }
     }
 
     getScore() {
