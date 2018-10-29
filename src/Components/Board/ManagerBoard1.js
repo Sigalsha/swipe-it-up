@@ -124,6 +124,7 @@ class ManagerBoard1 extends Component {
         <div className="mng-board">
           <LinkToCopy />
           <Players />
+          <Podium/>
           <StartGameBtn onClick={this.startGame} />
           <div className="game-status">Game status:<br />{this.props.store.gameState}</div>
     
