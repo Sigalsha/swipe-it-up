@@ -8,15 +8,13 @@ import { setInterval, setTimeout } from 'timers';
 @inject("store")
 @observer
 class Podium extends Component {
-    render() {
-        if (this.props.store.shots.length === 0) {
-            return (
-                <div className="podium">
-                    <div className="first-place"></div>
-                    <div className="second-place"></div>
-                    <div className="third-place"></div>
-                </div>
-            )
+    render (){
+        if (this.props.store.shots.length===0){
+            return (<div><div className="podium">
+            <div className="first-place"></div>
+            <div className="second-place"></div>
+            <div className="third-place"></div>
+            </div></div>)
         }
         else if (this.props.store.shots.length === 1) {
             return (<div className="podium">

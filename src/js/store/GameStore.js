@@ -3,7 +3,7 @@ import { gameProperties, updateGameStatus } from '../api';
 import openSocket from 'socket.io-client';
 
 class GameStore {
-    @observable userName = 'user-1';
+    @observable userName = '';
     @observable gameState = 'pending';
     @observable games = [];
     @observable users = [];
@@ -13,7 +13,6 @@ class GameStore {
     @observable shots = [] //array of all shots  
     @observable playerIcon = {};//should get the player's icon (x,y)
     @observable score = {};//should get the player's icon (x,y)
-    //@observable allDistances = []; //all the distances between the shots and the targets 
     
     socket = openSocket('http://localhost:5000');
     
@@ -26,7 +25,12 @@ class GameStore {
         });
         this.socket.on('new user', (user) => { //from server
             this.users = user;
+        });
+        
+        this.socket.on('remove shots', () => { //from server
+            this.shots = [];
         }); 
+        
         this.socket.on('user shot', (shot)=>{
             this.shots.push(shot);
             this.shots.sort((a, b)=>{return a.distance - b.distance});//sort before insert    
@@ -74,6 +78,10 @@ class GameStore {
         return this.shot.y; 
     }
     
+    @action clearShots() {
+        this.socket.emit('remove shots'); //to server
+    }
+    
     @action addDistance() {
         let target = { ...this.target }
         let shot = { ...this.shot }
@@ -93,24 +101,6 @@ class GameStore {
         }
     }
     
-    getSum (total, num) {
-        return total + num;
-    }
-    
-    getScore() {
-        let score = this.allDistances.reduce(this.getSum)
-        //should add logic that checks if the player miss the startIcon,
-        //and reduce the score.
-    }
-    
-    
-    // if (this.shot.startPoint) { 
-    // } else {
-    //     console.log("player should have less points") 
-    //     //should send some obj data through socket.io, 
-    //     //so the player's score will be lower. 
-    // }
-    
     getGameProperty = () => {gameProperties('',
     (err, properties) => {
         this.users = properties.users;
@@ -118,11 +108,6 @@ class GameStore {
     });
 }
 
-// changeGameState = (state) => {updateGameStatus(state,
-//     (err, properties) => {
-//         this.gameState = properties.gameState;
-//     });
-// }
 
 addUser(user) {
     this.socket.emit('new user', user); //to server

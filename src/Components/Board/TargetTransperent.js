@@ -24,7 +24,7 @@ class TargetTransperent extends Component {
             .getBoundingClientRect()
         console.log(rect.x, rect.y)
         this.divPos.x = rect.x + 50 //finding the div's center
-        this.divPos.y = rect.y + 85 //finding the div's center
+        this.divPos.y = rect.y + 25 //finding the div's center
         console.log(this.divPos.x, this.divPos.y)
         this.props.addTargerPos(this.divPos.x, this.divPos.y);
     }

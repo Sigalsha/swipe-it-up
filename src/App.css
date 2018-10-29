@@ -166,7 +166,7 @@
 
 .players{
   font-size: 1.4em;
-  height: 35%;
+  height: 42%;
   width: 20%;
   padding: 2%;
   margin-left: 5%;
@@ -264,11 +264,10 @@
 
 .target {
   left:40%;
-    top: 10%;
+  top: 10%;
   position: absolute;
   height: 100px;
   width: 50px;
-  border: 0.5px solid red ;
   background-repeat: no-repeat;
   background-image: url('./pictures/flat-shaded-business-woman.svg');
 }
@@ -279,7 +278,7 @@
   width: 16%;
   padding: 0.5%;
   margin-left: 7%;
-  margin-top: 3%;
+  margin-top: 2%;
   background-color: #5352ed;
   opacity: 0.97;
   border-radius: 3%;
@@ -376,7 +375,6 @@
   width: 50px;
   background-repeat: no-repeat;
   background-size: contain;
-  border: 0.5px solid red ;
   background-color: transparent;
 }
 
@@ -423,7 +421,7 @@
     position: absolute;
     height: 100px;
     width: 50px;
-    border: 0.5px solid red ;
+
   }
   .targetTransperent {
     left:40%;
@@ -431,7 +429,7 @@
     position: absolute;
     height: 100px;
     width: 50px;
-    border: 0.5px solid red ;
+
   }
   .go-message{
     margin-top: 5%;

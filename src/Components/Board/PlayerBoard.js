@@ -7,6 +7,7 @@ import Target from '../Board/Target';
 import TargetTransperent from '../Board/TargetTransperent';
 import Podium from '../Messages/Podium';
 import Shot from '../Board/Shot';
+import Score from '../Messages/ScoreTable';
 
 function sleep(ms) { 
   return new Promise(resolve => setTimeout(resolve, ms));//resolve reject 
@@ -29,13 +30,14 @@ class PlayerBoard extends Component {
   @observable showPrePodium = false;
   @observable showPodium = false;
   @observable showShot = false;
+  @observable showScore = false;
   
   componentDidMount = () => {
     this.props.store.socket.on('update state', () => { //from server
       this.gameManage();
     });
   }
-
+  
   gameManage = async () => {
     this.showMe = false;
     if(this.props.store.gameState==='pending') {
@@ -45,34 +47,37 @@ class PlayerBoard extends Component {
     await sleep(1000);
     this.showReady = false;
     this.showGo = true;
-    await sleep(3000);
+    await sleep(1000);
     this.showGo = false;
     this.showPlane = true;
-    await sleep(3000);
+    await sleep(4000);
     this.showPlane = false;
     this.showGameEnd = true;
-    await sleep(3000);
+    await sleep(2000);
     this.showGameEnd = false;
     this.showGetShot = true;
-    await sleep(3000);
+    await sleep(2000);
     this.showGetShot = false;
     this.showTarget = true;
     this.showShot = true;
-    await sleep(3000);
+    await sleep(5000);
     this.showTarget = false;
     this.showShot = false;
-    this.showReadyNext = true;
-    await sleep(3000);
-    this.showReadyNext = false;
+    // this.showReadyNext = true;
+    // await sleep(3000);
+    // this.showReadyNext = false;
     this.showGameOver = true;
-    await sleep(3000);
+    await sleep(2000);
     this.showGameOver = false;
-    this.showPrePodium  = true;
+    this.showPrePodium = true;
+    await sleep(5000);
+    this.showPrePodium = false;
+    this.showScore = true;
+    await sleep(5000);
+    this.showScore = false;
+    this.showPodium = true;
     await sleep(3000);
-    this.showPrePodium  = false;
-    this.showPodium  = true;
-    await sleep(3000);
-    this.showPodium  = false;
+    this.showPodium = false;    
   }
   
   render() {
@@ -84,6 +89,7 @@ class PlayerBoard extends Component {
       {this.showPlane&&<TargetTransperent/>}
       {this.showTarget&&<Target/>}
       {this.showShot&&<Shot/>}
+      {this.showScore&&<Score/>}
       {this.showGameEnd&&<Message content='Time Is Up!' class='game-end-message'/>}
       {this.showGetShot&&<Message content='Wanna See Your Shot?' class='message-shot'/>}
       {this.showReadyNext&&<Message content='Get Ready For The Next One!!!' class='ready-message'/>}

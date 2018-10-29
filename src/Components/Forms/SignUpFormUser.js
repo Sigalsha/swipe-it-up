@@ -21,7 +21,10 @@ class SignUpFormUser extends Component {
   }
 
   onSubmit = (event) => {
-
+    if(!this.name) {
+      alert("Please add your name to start playing");
+      return;
+    }
     if(window.innerHeight > window.innerWidth){
       alert("Please use Landscape and then continue");
     }
