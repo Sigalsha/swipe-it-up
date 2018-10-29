@@ -1,32 +1,464 @@
+* {
+  font-family: 'Inconsolata', monospace;
+}
+
 .App {
   text-align: center;
+  background-color: #54a0ff;
+  height: 900px;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.app-header{
+  font-size: 5em;
+  font-weight: bold;
+  padding-top: 2%;
+  color: #222f3e;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  letter-spacing: 0.1em;
+  /* animation-name: app-header-anime;
+  animation-duration: 3s; */
+  -webkit-transition: font-size 2s; /* Safari */
+  transition: font-size 2s;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-header:hover{
+  font-size: 7em;
+}
+
+
+.classroom {
+  width: 40%;
+  height: 20%;
+  margin-top: 3%;
+}
+
+.navbar {
+  background-color: #222f3e;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-evenly;
+}
+
+.nav-item {
   color: white;
+  text-decoration: none;
+  font-size: 1.2em;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-item:hover {
+  color: #3742fa;
+  text-decoration: none;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  /* border: 1px solid #3742fa;  */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.form {
+  padding: 2%;
+  margin-top: 2%;
+  font-size: 1.2em;
+}
+
+.input {
+  width: 60%;
+  text-align: center;
+  margin-right: 0.5%;
+  background-color: transparent;
+  border-style: solid; 
+  border-width: 0px 0px 1px 0px; 
+}
+
+.sign-header {
+  width: 20%;
+  margin-right: 2%;
+  font-weight: 550;
+  letter-spacing: 0.1em;
+}
+
+.signBtn {
+  width: 15%;
+  border: 1px solid  #3742fa;
+  border-radius: 5%;
+  background-color: #3742fa;
+}
+
+.signBtn:hover {
+  cursor: pointer;
+  font-weight: bold;
+  border: 2px solid #222f3e;
+}
+
+
+.mng-board {
+  height: 90vh;
+  width: 100vw;
+  background-image: url('./pictures/trans.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.create-game-btn {
+  width: 15%;
+  height: 150%;
+  border: 1px solid  #3742fa;
+  border-radius: 5%;
+  background-color: #3742fa;
+  padding: 2%;
+  margin-top: 5%;
+  color: black;
+  display: flex;
+  justify-content: center;
+  margin-left: 43.5%;
+}
+
+.create-game-btn:hover {
+  border: 2px solid #222f3e;
+}
+
+#link-to-game{
+  text-align: center;
+  font-size: 1.4em;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+}
+
+#link-to-game:hover{
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.url-title {
+  font-size: 200%;
+  font-weight: 500;
+  font-size: 1.6em;
+  padding: 1%;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: #54a0ff;
+  opacity: 0.9;
+  color: black;
+}
+
+.arrow-icon {
+  margin-top: 0.5%;
+}
+
+#url-str:hover {
+  font-weight: bold;
+}
+
+.start-game-btn {
+  margin-top: 3%;
+  width: 16%;
+  margin-left: 7%;
+  text-align: center;
+  padding: 0.5%;
+  font-size: 1.6em;
+  font-weight: bold;
+  border: 1px solid  #3742fa;
+  border-radius: 5%;
+  background-color: #3742fa;
+}
+
+.start-game-btn:hover {
+  cursor: pointer;
+  border: 3px solid #222f3e;
+}
+
+.players{
+  font-size: 1.4em;
+  height: 42%;
+  width: 20%;
+  padding: 2%;
+  margin-left: 5%;
+  margin-top: 3%;
+  background-color: #5352ed;
+  opacity: 0.95;
+  border: 5px solid #222f3e;
+  border-radius: 5%;
+}
+
+#players-header {
+  font-weight: bold;
+  font-size: 1.05em;
+}
+
+
+.go-message{
+  margin-left: 25%;
+  padding: 3%;
+  width: 50%;
+  height: 40vh;
+  background-color:#2ed573;
+  color: black;
+  font-weight: bold;
+  font-size: 4em;
+  opacity: 0.95;
+}
+
+.ready-message{
+  margin-left: 25%;
+  padding: 3%;
+  width: 50%;
+  height: 40vh;
+  background-color: #ff6348;
+  color: black;
+  font-weight: bold;
+  font-size: 4em;
+  opacity: 0.95;
+}
+
+.game-end-message{
+  margin-left: 25%;
+  padding: 3%;
+  width: 50%;
+  height: 40vh;
+  background-color:#d63031;
+  color: black;
+  font-weight: bold;
+  font-size: 4em;
+  opacity: 0.95;
+}
+
+.message-shot{
+  margin-left: 25%;
+  padding: 3%;
+  width: 50%;
+  height: 40vh;
+  background-color:#2e86de;
+  color: black;
+  font-weight: bold;
+  font-size: 4em;
+  opacity: 0.95;
+}
+
+.score-table {
+  color: black;
+  font-weight: bold;
+  margin-left: 25%;
+  padding: 3%;
+  width: 50%;
+  height: 40vh;
+  background-color:#2ed573;
+  font-size: 1em;
+  opacity: 0.95;
+}
+
+.score-table-headline {
+  margin-left: 25%;
+  display: flex;
+}
+.score-table-headline-item {
+  background-color: #3742fa;
+  border: 2px solid #222f3e;
+  width:25%;
+}
+
+.score-table-record {
+  margin-left:25%;
+  display: flex;
+}
+.score-table-item {
+  border: 2px solid black;
+  width:25%;
+}
+
+.target {
+  left:40%;
+  top: 30%;
+  position: absolute;
+  height: 100px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-image: url('./pictures/flat-shaded-business-woman.svg');
+}
+
+.game-status{
+  font-size: 1.1em;
+  height: 12%;
+  width: 16%;
+  padding: 0.5%;
+  margin-left: 7%;
+  margin-top: 2%;
+  background-color: #5352ed;
+  opacity: 0.97;
+  border-radius: 3%;
+  font-weight: bold;
+}
+
+#game-stat-head {
+  font-weight: bold;
+}
+
+
+.touch {
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  left:0;
+  bottom: 0;
+  font-size:100px;
+  transform: rotate(-27deg);
+  transform: skewY(0deg);
+  transform: scaleY(0.5);
+}
+
+
+.podium {
+  position: absolute;
+  margin-left: 40%;
+  padding: 3%;
+  height: 50vh;;
+  width: 70%;
+  font-size: 2em;
+  top:20%;
+  opacity: 0.95;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url('./pictures/competition.svg');
+}
+
+.first-place{
+  position: absolute;
+  z-index: 2;
+  background-color: #feca57;
+  height: 22%;
+  width: 15%;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 10px;
+  left: 10%;
+  top: 100%;
+  border: black 7px solid;
+}
+
+.second-place{
+  position: absolute;
+  z-index: 2;
+  background-color: #54a0ff;
+  height: 22%;
+  width: 15%;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 10px;
+  left: -5%;
+  top: 100%;
+  border: black 7px solid;
+}
+
+.third-place{  
+  position: absolute;
+  z-index: 2;
+  background-color: #ff6b6b;
+  height: 22%;
+  width: 15%;
+  text-align: center;
+  font-size: 25px;
+  padding-left: 10px;
+  left: 25%;
+  top: 100%;
+  border: black 7px solid;
+}
+
+.plane {
+  transform: rotate(-30deg);
+  color:#222f3e;
+  font-size: 1.5em;
+  left:45%;
+  top: 80%;
+  position: absolute;
+}
+
+.targetTransperent {
+  left:50%;
+  top: 30%;
+  position: absolute;
+  height: 100px;
+  width: 50px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+}
+
+.shot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #5352ed;
+}
+
+@media screen and (max-width: 768px){
+  .navbar {
+    justify-content: space-between;
   }
-  to {
-    transform: rotate(360deg);
+  .classroom {
+    margin-top: 5%;
+    height: 90%;
+    width: 70%;
+  }
+  .app-header {
+    font-size: 12vw;
+  }
+  .app-header:hover{
+    font-size: 4.5em;
+  }
+  .form {
+    padding: 1%;
+  }
+  .signBtn {
+    width: 25%;
+  }
+  .create-game-btn {
+    width: 40%;
+    margin-left: 30%;
+  }
+  .mng-board {
+    background-size: contain;
+    height: 120vh;
+    width: 100vw;
+  }
+  .target {
+    left:40%;
+    top: 30%;
+    position: absolute;
+    height: 100px;
+    width: 50px;
+
+  }
+  .targetTransperent {
+    left:40%;
+    top: 30%;
+    position: absolute;
+    height: 100px;
+    width: 50px;
+
+  }
+  .go-message{
+    margin-top: 5%;
+    font-size: 2em;
+  }
+
+  .ready-message{
+    margin-top: 5%;
+
+    font-size: 2em;
+  }
+
+  .game-end-message{
+    margin-top: 5%;
+
+    font-size: 2em;
+
+  }
+
+  .message-shot{
+    margin-top: 5%;
+
+    font-size: 2em;
   }
 }
+
+
+
+
+
+
