@@ -78,7 +78,6 @@ class PlayerBoard extends Component {
   render() {
     return (
       <div className="mng-board">
-      {/* <div className="game-status">Game status:<br/>{this.props.store.gameState}</div> */}
       {this.showReady&&<Message content='Ready?!? 1,2,3' class='ready-message'/>}
       {this.showGo&&<Message content='Go' class='go-message'/>}
       {this.showPlane&&<Plane/>}
@@ -86,10 +85,10 @@ class PlayerBoard extends Component {
       {this.showTarget&&<Target/>}
       {this.showShot&&<Shot/>}
       {this.showGameEnd&&<Message content='Time Is Up!' class='game-end-message'/>}
-      {this.showGetShot&&<Message content='Wanna See Your Shot?' class='ready-message'/>}
-      {this.showReadyNext&&<Message content='Get Ready For The Next One!!!' class='ready-next-message'/>}
+      {this.showGetShot&&<Message content='Wanna See Your Shot?' class='message-shot'/>}
+      {this.showReadyNext&&<Message content='Get Ready For The Next One!!!' class='ready-message'/>}
       {this.showGameOver&&<Message content='Game Over!!!' class='game-end-message'/>}
-      {this.showPrePodium&&<Message content="Let's See Who Won!" class='ready-next-message'/>}
+      {this.showPrePodium&&<Message content="Let's See Who Won!" class='message-shot'/>}
       {this.showPodium&&<Podium/>}  
       </div>
       );

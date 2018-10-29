@@ -2,7 +2,7 @@ import { observer, inject } from 'mobx-react';
 import { observable } from 'mobx';
 import React, { Component } from 'react';
 import CreateGameBtn from '../Buttons/CreateGameBtn';
-import Classroom from '../../images/classroom.svg'
+import Classroom from '../../images/classroom.png'
 
 
 
@@ -15,6 +15,7 @@ class SignUpForm extends Component {
   onSubmit = (event) => {
     event.preventDefault()
     this.showMe = false;
+
   }
 
   render() {

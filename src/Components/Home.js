@@ -1,7 +1,7 @@
 // import {observer, inject} from 'mobx-react';
 // import {observable} from 'mobx';
 import React, { Component } from 'react';
-import Classroom from '.././images/classroom.svg'
+import Classroom from '.././images/classroom.png'
 
 
 class Home extends Component {

@@ -8,7 +8,7 @@ import Home from './Components/Home';
 import SignUpForm from './Components/Forms/SignUpForm';
 import ManagerBoard1 from './Components/Board/ManagerBoard1';
 import SignUpFormUser from './Components/Forms/SignUpFormUser';
-import Classroom from './images/classroom.svg'
+import Classroom from './images/classroom.png'
 
 
 @inject("store")
@@ -24,6 +24,7 @@ class App extends Component {
     this.callApi()
       .then(res => this.setState({ response: res.express }))
       .catch(err => console.log(err));
+
   }
 
   callApi = async () => {

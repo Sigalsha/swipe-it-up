@@ -2,12 +2,16 @@ import { observer, inject } from 'mobx-react';
 import { observable } from 'mobx';
 import React, { Component } from 'react';
 import PlayerBoard from '../Board/PlayerBoard';
-import Classroom from '../../images/classroom.svg'
+import Classroom from '../../images/classroom.png'
 
 
 @inject("store")
 @observer
 class SignUpFormUser extends Component {
+  constructor(){
+    super()
+    this.state = {mobileView:false};
+  }
 
   @observable showMe = true
   @observable name = ''
@@ -17,14 +21,32 @@ class SignUpFormUser extends Component {
   }
 
   onSubmit = (event) => {
+
+    if(window.innerHeight > window.innerWidth){
+      alert("Please use Landscape and then continue");
+    }
+    else{
+      // alert("Youre good!!");
+      this.setState({
+        mobileView:true
+      });
+
     event.preventDefault()
     this.props.store.addUser(this.name); //add user to the list of users
     this.props.store.userName = this.name; // add current user
     //i/o to DB
     this.showMe = false;
+    }
   }
 
   render() {
+
+    // if (!this.state.mobileView) {
+    //   return(
+    //     <div>Change your direction</div>
+    //   )
+    // } 
+
     return (
       this.showMe ? (
         <div>
