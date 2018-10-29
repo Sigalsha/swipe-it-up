@@ -13,7 +13,18 @@
   font-weight: bold;
   padding-top: 2%;
   color: #222f3e;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  letter-spacing: 0.1em;
+  /* animation-name: app-header-anime;
+  animation-duration: 3s; */
+  -webkit-transition: font-size 2s; /* Safari */
+  transition: font-size 2s;
 }
+
+.app-header:hover{
+  font-size: 7em;
+}
+
 
 .classroom {
   width: 100%;
@@ -58,10 +69,11 @@
   width: 20%;
   margin-right: 2%;
   font-weight: 550;
+  letter-spacing: 0.1em;
 }
 
 .signBtn {
-  width: 10%;
+  width: 15%;
   border: 1px solid  #3742fa;
   border-radius: 5%;
   background-color: #3742fa;
@@ -70,16 +82,16 @@
 .signBtn:hover {
   cursor: pointer;
   font-weight: bold;
+  border: 2px solid #222f3e;
 }
 
 
 .mng-board {
-  height: 550px;
+  height: 80%;
   background-image: url('./images/class-game.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 
 .create-game-btn {
   width: 15%;
@@ -93,6 +105,10 @@
   display: flex;
   justify-content: center;
   margin-left: 43.5%;
+}
+
+.create-game-btn:hover {
+  border: 2px solid #222f3e;
 }
 
 #link-to-game{
@@ -116,7 +132,7 @@
   display: flex;
   justify-content: space-evenly;
   background-color: #54a0ff;
-  opacity: 0.8;
+  opacity: 0.9;
   color: black;
 }
 
@@ -131,45 +147,38 @@
 .start-game-btn {
   margin-top: 3%;
   width: 20%;
-  margin-left: 40%;
+  margin-left: 5%;
   text-align: center;
   padding: 0.5%;
-  font-size: 1.4em;
+  font-size: 1.6em;
+  font-weight: bold;
   border: 1px solid  #3742fa;
   border-radius: 5%;
   background-color: #3742fa;
 }
+
 .start-game-btn:hover {
   cursor: pointer;
-  font-weight: bold;
+  border: 3px solid #222f3e;
 }
-
-/* .signBtn {
-  width: 10%;
-  border: 1px solid  #3742fa;
-  border-radius: 5%;
-  background-color: #3742fa;
-}
-
-
 
 .players{
   font-size: 1.4em;
   height: 40%;
   width: 20%;
   padding: 2%;
-  margin-left: 40%;
+  margin-left: 5%;
   margin-top: 3%;
   background-color: #5352ed;
   opacity: 0.92;
   border: 5px solid #222f3e;
   border-radius: 5%;
 }
+
 #players-header {
   font-weight: bold;
   font-size: 1.05em;
 }
-
 
 
 .go-message{
@@ -177,21 +186,21 @@
   /* margin-right: 15%; */
   height: 400px;
   width: 600px;
-  background-color:blue;
+  background-color:#2ed573;
   color: black;
   font-weight: bold;
   font-size: 250px;
 }
 
 .ready-message{
-  margin-left: 13%;
-  /* margin-right: 15%; */
-  height: 400px;
-  width: 600px;
-  background-color:orangered;
+  margin-left: 15%;
+  margin-top: 15%;
+  padding: 2%;
+  width: 50%;
+  background-color: #ff6348;
   color: black;
   font-weight: bold;
-  font-size: 100px;
+  font-size: 5em;
 }
 
 .game-end-message{
@@ -199,18 +208,18 @@
   /* margin-right: 15%; */
   height: 400px;
   width: 600px;
-  background-color:red;
+  background-color:#d63031;
   color: black;
   font-weight: bold;
   font-size: 100px;
 }
 
-.ready-next-message{
+.ready-shot{
   margin-left: 13%;
   /* margin-right: 15%; */
   height: 400px;
   width: 600px;
-  background-color:gainsboro;
+  background-color:#2e86de;
   color: black;
   font-weight: bold;
   font-size: 80px;
@@ -322,26 +331,51 @@
 }
 
 @media screen and (max-width: 600px){
+  .navbar {
+    justify-content: space-between;
+  }
   .classroom {
     min-width: 250px;
     max-width: 400px;
     max-height: 300px;
   }
-
   .app-header {
     font-size: 3.5em;
     max-height: 200px;
     padding:none;
   }
+  .app-header:hover{
+    font-size: 4.5em;
+  }
   /* .form{
     
   } */
-  .navbar {
-    justify-content: space-between;
+  .signBtn {
+    width: 25%;
+  }
+  .create-game-btn {
+    width: 40%;
+    margin-left: 30%;
+  }
+  .mng-board {
+    height: 60%;
+    max-width: 600px;
+  }
+
+ 
+}
+
+@media screen and (max-width: 450px){
+  .mng-board {
+    height: 70%;
+    max-width: 400px;
+    background-image: url('./images/class-game.png');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 }
 
-@media screen and (max-width: 350px){
+@media screen and (max-width: 374px){
   .classroom {
     min-width: 250px;
     max-width: 400px;
@@ -351,5 +385,32 @@
     font-size: 3em;
     max-height: 200px;
     padding:none;
+  }
+  .app-header:hover{
+    font-size: 4em;
+  }
+  .signBtn {
+    width: 30%;
+    margin-top: 3%;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 325px){
+  /* .classroom {
+    min-width: 250px;
+    max-width: 400px;
+    max-height: 200px;
+  } */
+  .app-header {
+    font-size: 2.5em;
+    max-height: 200px;
+    padding:none;
+  }
+  .app-header:hover{
+    font-size: 3em;
   }
 }

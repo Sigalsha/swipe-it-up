@@ -1,5 +1,5 @@
-import {observer, inject} from 'mobx-react';
-import {observable} from 'mobx';
+import { observer, inject } from 'mobx-react';
+import { observable } from 'mobx';
 import React, { Component } from 'react';
 
 
@@ -9,14 +9,17 @@ import React, { Component } from 'react';
 class Message extends Component {
 
   @observable showMe = true;
-  
+
   toggleShowMe = () => {
     this.showMe = false;
   }
 
 
   render() {
-    return (<div className={this.props.class}>{this.props.content}</div>)
-    }
+    return (
+      <div className={this.props.class}>
+        {this.props.content}
+      </div>)
   }
-  export default Message;
+}
+export default Message;

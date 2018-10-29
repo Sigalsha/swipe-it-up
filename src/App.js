@@ -69,9 +69,9 @@ class App extends Component {
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <Link className="nav-item" to="/" >Swipe It Up</Link>
-      <Link className="nav-item" to="/Register">Sign Up</Link>
-      <Link className="nav-item" to="/credits">Credits</Link>
+      <Link className="nav-item" to="/" >home</Link>
+      <Link className="nav-item" to="/Register">sign up</Link>
+      <Link className="nav-item" to="/credits">credits</Link>
     </nav>
   )
 }

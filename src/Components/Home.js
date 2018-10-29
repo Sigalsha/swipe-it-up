@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import Classroom from '.././images/classroom.svg'
 
 
-
 class Home extends Component {
 
     render() {

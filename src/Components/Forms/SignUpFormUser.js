@@ -31,7 +31,7 @@ class SignUpFormUser extends Component {
             <label>
               <span className="sign-header">name:</span><input className="input" type="text" onChange={this.handleChange} placeholder={"add your name"} name="name" value={this.name} />
             </label>
-            <input className="signBtn" type="submit" value="SignUp" />
+            <input className="signBtn" type="submit" value="sign up" />
           </form>
           <Image src={Classroom}/>
         </div>

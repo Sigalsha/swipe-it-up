@@ -114,7 +114,7 @@ class PlayerBoard extends Component {
   render() {
     return (
       <div className="mng-board">
-      <div className="game-status">Game status:<br/>{this.props.store.gameState}</div>
+      {/* <div className="game-status">Game status:<br/>{this.props.store.gameState}</div> */}
       {this.showReady&&<Message content='Ready?!? 1,2,3' class='ready-message'/>}
       {this.showGo&&<Message content='Go' class='go-message'/>}
       {this.showPlane&&<Plane/>}

@@ -18,7 +18,7 @@ class Players extends Component {
   render() {
     return (
       <div className="players">
-        <span id="players-header">Players online:</span><div>
+        <span id="players-header">players online:</span><div>
           {this.getUsers()}</div>
       </div>
     );

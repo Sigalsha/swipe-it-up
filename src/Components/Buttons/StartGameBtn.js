@@ -10,7 +10,7 @@ class StartGameBtn extends Component {
   render() {
     return (
       <div className="start-game-btn" onClick={this.startGame}>
-        Start Game
+        start game
     </div>
     );
   }

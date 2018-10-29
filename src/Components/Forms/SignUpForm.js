@@ -25,7 +25,7 @@ class SignUpForm extends Component {
             <label>
               <span className="sign-header">name:</span><input className="input" type="text" name="name" placeholder={"add your name"} />
             </label>
-            <input className="signBtn" type="submit" value="SignUp" />
+            <input className="signBtn" type="submit" value="sign up" />
           </form>
           <Image src={Classroom} />
         </div>

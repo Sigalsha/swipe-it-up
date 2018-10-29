@@ -82,14 +82,14 @@ class ManagerBoard extends Component {
   messageGo = () => {
     return (
       <div className="mng-board">
-        <div className="game-status">Game status:<br />{this.props.store.gameState}</div>
-        <StartGameBtn onClick={this.startGame} />
+        {/* <div className="game-status">Game status:<br />{this.props.store.gameState}</div> */}
+        {/* <StartGameBtn onClick={this.startGame} /> */}
         {this.showReady && <Message content='Ready?!? 1,2,3' class='ready-message' />}
         {this.showGo && <Message content='Go' class='go-message' />}
         {this.showTarget && <Target />}
         {this.showGameEnd && <Message content='Time Is Up!' class='game-end-message' />}
-        {this.showGetShot && <Message content='Wanna See Your Shot?' class='ready-message' />}
-        {this.showReadyNext && <Message content='Get ready for the next one!!!' class='ready-next-message' />}
+        {this.showGetShot && <Message content='Wanna See Your Shot?' class='ready-shot' />}
+        {this.showReadyNext && <Message content='Get ready for the next one!!!' class='ready-message' />}
         {this.showGameOver && <Message content='Game Over!!!' class='game-end-message' />}
       </div>)
   }
