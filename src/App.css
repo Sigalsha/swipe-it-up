@@ -264,7 +264,7 @@
 
 .target {
   left:40%;
-  top: 10%;
+  top: 30%;
   position: absolute;
   height: 100px;
   width: 50px;
@@ -417,7 +417,7 @@
   }
   .target {
     left:40%;
-    top: 10%;
+    top: 30%;
     position: absolute;
     height: 100px;
     width: 50px;
@@ -425,7 +425,7 @@
   }
   .targetTransperent {
     left:40%;
-    top: 10%;
+    top: 30%;
     position: absolute;
     height: 100px;
     width: 50px;
