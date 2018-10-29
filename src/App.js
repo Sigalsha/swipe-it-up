@@ -4,13 +4,12 @@ import './App.css';
 import { observer, inject } from 'mobx-react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-// import LoginFormSocket from './Components/Forms/LoginFormSocket';
 import Home from './Components/Home';
 import SignUpForm from './Components/Forms/SignUpForm';
-// import LoginForm from './Components/Forms/LoginForm';
-import ManagerBoard from './Components/Board/ManagerBoard';
+import ManagerBoard1 from './Components/Board/ManagerBoard1';
 import SignUpFormUser from './Components/Forms/SignUpFormUser';
 import Classroom from './images/classroom.svg'
+
 
 @inject("store")
 @observer
@@ -36,18 +35,6 @@ class App extends Component {
     return body;
   };
 
-  // toggleImage = () => {
-  //   if (this.state.image){
-  //     this.setState({image: false})
-  //   } else {
-  //     this.setState({image: true})
-  //   }
-  // }
-
- 
-
-
-
   render() {
     console.log("res:" + this.state.response);
     return (
@@ -56,9 +43,8 @@ class App extends Component {
           <Navbar />
           <Route path="/" exact render={() => ( <Home src={Classroom}/>)} />
           <Route path="/Register" exact render={() => (<SignUpForm src={Classroom} />)} />
-          <Route path="/Game" exact render={() => (<ManagerBoard src={Classroom} />)} />
+          <Route path="/Game" exact render={() => (<ManagerBoard1 src={Classroom} />)} />
           <Route path="/User" exact render={() => (<SignUpFormUser src={Classroom} />)} />
-          {/* <Route path="/Login" exact render={() => (<LoginForm/>)} /> */}
         </div>
       </Router>
     );

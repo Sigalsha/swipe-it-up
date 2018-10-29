@@ -203,6 +203,33 @@
   font-size: 5em;
 }
 
+.score-table {
+  margin-left: 13%;
+  height: 400px;
+  width: 600px;
+  background-color:mediumspringgreen;
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+}
+.score-table-headline {
+  margin-left:120px;
+  display: flex;
+}
+.score-table-headline-item {
+  background-color: blue;
+  border: 2px solid black;
+  width:25%;
+}
+.score-table-record {
+  margin-left:120px;
+  display: flex;
+}
+.score-table-item {
+  border: 2px solid black;
+  width:25%;
+}
+
 .game-end-message{
   margin-left: 13%;
   /* margin-right: 15%; */
@@ -233,7 +260,6 @@
   width: 100px;
   background-repeat: no-repeat;
   background-image: url('./pictures/flat-shaded-business-woman.svg');
-
 }
 
 .game-status{
@@ -360,6 +386,9 @@
   .mng-board {
     height: 60%;
     max-width: 600px;
+    background-image: url('./images/class-game.png');
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 
  

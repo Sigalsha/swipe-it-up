@@ -1,29 +1,39 @@
 import { observer, inject } from 'mobx-react';
-// import {autorun, reaction, intercept} from 'mobx';
-import { observable } from 'mobx';
+import { observable, action } from 'mobx';
 import React, { Component } from 'react';
 import StartGameBtn from '../Buttons/StartGameBtn';
 import Players from './Players';
 import Message from '../Messages/Message';
 import { setInterval, setTimeout } from 'timers';
-import Target from "./Target"
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons'
 library.add(faArrowAltCircleRight)
+import Target from "./Target"
+import Podium from "../Messages/Podium"
+import ScoreTable from "../Messages/ScoreTable"
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));//resolve reject 
+}//return promise not should be async
+
 
 @inject("store")
 @observer
-class ManagerBoard extends Component {
+class ManagerBoard1 extends Component {
 
   @observable showMe = true;
-  @observable showReady = false;
+  @observable showReady = true;
   @observable showGo = false;
   @observable showTarget = false;
   @observable showGameEnd = false;
   @observable showGetShot = false;
   @observable showReadyNext = false;
   @observable showGameOver = false;
+  @observable showPrePodium = false;
+  @observable showScore = false;
+  @observable showPodium = false;
+  @observable showBtn = false;
 
   componentDidMount() {
     this.props.store.socket.on('update state', () => { //from server
@@ -31,59 +41,62 @@ class ManagerBoard extends Component {
     });
 
   }
-  startGame = () => {
-    if (this.props.store.gameState === 'started') {
-      this.props.store.changeGameState('pending');
+
+  @action startGame = async () => {
+    if (this.props.store.gameState === 'starting') {
       return;
     }
-    this.props.store.changeGameState('started');
+    console.log('startGame');
+    this.props.store.updateGameStatus('starting');
     this.showMe = false;
-    setTimeout(this.toggleReady, 0);//ready
-    setTimeout(this.toggleReady, 1000);
-    setTimeout(this.toggleGo, 1000);//go
-    setTimeout(this.toggleGo, 2700);
-    setTimeout(this.toggleTarget, 2700);//target
-    setTimeout(this.toggleTarget, 6700);
-    setTimeout(this.toggleGameEnd, 6700);//time is up
-    setTimeout(this.toggleGameEnd, 7700);
-    setTimeout(this.toggleGetShot, 7700);//wanna see your shot
-    setTimeout(this.toggleGetShot, 9500);
-    setTimeout(this.toggleTarget, 9500);// target and shot
-    setTimeout(this.toggleTarget, 14000);
-    setTimeout(this.toggleGetNext, 14000);// get ready for the next step
-    setTimeout(this.toggleGetNext, 16500);
-    setTimeout(this.toggleGameOver, 16500);
-    setTimeout(this.toggleGameOver, 18500);
-    //setTimeout(this.props.store.changeGameState('pending'), 20500);
+    this.showReady = true;
+    await sleep(1000);
+    this.showReady = false;
+    this.showGo = true;
+    await sleep(3000);
+    this.showGo = false;
+    this.showTarget = true;
+    await sleep(3000);
+    this.showTarget = false;
+    this.showGameEnd = true;
+    await sleep(3000);
+    this.showGameEnd = false;
+    this.showGetShot = true;
+    await sleep(3000);
+    this.showGetShot = false;
+    this.showTarget = true;
+    await sleep(3000);
+    this.showTarget = false;
+    this.showReadyNext = true;
+    await sleep(3000);
+    this.showReadyNext = false;
+    this.showGameOver = true;
+    await sleep(3000);
+    this.showGameOver = false;
+    this.showReadyNext = false;
+    this.showPrePodium = true;
+    await sleep(3000);
+    this.showPrePodium = false;
+    this.showScore = true;
+    await sleep(5000);
+    this.showScore = false;
+    this.showPodium = true;
+    await sleep(3000);
+    this.showPodium = false;
+    this.props.store.updateGameStatus('pending');
+    this.showMe = true;
   }
 
-  toggleReady = () => {
-    this.showReady = !this.showReady;
+  @action setReady = (value) => {
+    this.showReady = value;
   }
-  toggleGo = () => {
-    this.showGo = !this.showGo;
-  }
-  toggleTarget = () => {
-    this.showTarget = !this.showTarget;
-  }
-  toggleGameEnd = () => {
-    this.showGameEnd = !this.showGameEnd;
-  }
-  toggleGetShot = () => {
-    this.showGetShot = !this.showGetShot;
-  }
-  toggleGetNext = () => {
-    this.showReadyNext = !this.showReadyNext;
-  }
-  toggleGameOver = () => {
-    this.showGameOver = !this.showGameOver;
-  }
+
 
   messageGo = () => {
     return (
       <div className="mng-board">
-        {/* <div className="game-status">Game status:<br />{this.props.store.gameState}</div> */}
-        {/* <StartGameBtn onClick={this.startGame} /> */}
+        <div className="game-status">Game status:<br />{this.props.store.gameState}</div>
+        <StartGameBtn onClick={this.startGame} />
         {this.showReady && <Message content='Ready?!? 1,2,3' class='ready-message' />}
         {this.showGo && <Message content='Go' class='go-message' />}
         {this.showTarget && <Target />}
@@ -91,6 +104,9 @@ class ManagerBoard extends Component {
         {this.showGetShot && <Message content='Wanna See Your Shot?' class='ready-shot' />}
         {this.showReadyNext && <Message content='Get ready for the next one!!!' class='ready-message' />}
         {this.showGameOver && <Message content='Game Over!!!' class='game-end-message' />}
+        {this.showPrePodium && <Message content="Let's See Who Won!" class='ready-shot' />}
+        {this.showScore && <ScoreTable />}
+        {this.showPodium && <Podium />}
       </div>)
   }
 
@@ -100,11 +116,10 @@ class ManagerBoard extends Component {
         <div className="mng-board">
           <LinkToCopy />
           <Players />
-          {/* <div className="game-status">Game status:<br />{this.props.store.gameState}</div> */}
+          <div className="game-status">Game status:<br />{this.props.store.gameState}</div>
           <StartGameBtn onClick={this.startGame} />
         </div>
-      ) : (this.messageGo())
-    );
+      ) : (this.messageGo()));
   }
 }
 
@@ -119,5 +134,5 @@ const LinkToCopy = () => {
     </div>
   )
 }
-export default ManagerBoard;
 
+export default ManagerBoard1;

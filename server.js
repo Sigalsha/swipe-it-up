@@ -26,12 +26,16 @@ io.on('connection', (socket) => {
 
   socket.on('user shot', (shot) => {
     gameProperties.shots.push(shot);
+    gameProperties.shots.sort((a, b)=>{return a.distance - b.distance});//sort before insert
     console.log('shot: '+JSON.stringify(gameProperties.shots[gameProperties.shots.length-1]));
-    io.emit('user shot', gameProperties.shots[gameProperties.shots.length-1]);
+    io.emit('user shot', shot);
   });
 
   socket.on('update state', (state) => {
     console.log('state: '+state);
+    if (gameProperties.gameState === state){
+      return;
+    }
     gameProperties.gameState = state
     io.emit('update state', gameProperties.gameState);
   });

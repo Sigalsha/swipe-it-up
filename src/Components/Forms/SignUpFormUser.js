@@ -18,7 +18,8 @@ class SignUpFormUser extends Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    this.props.store.addUser(this.name);
+    this.props.store.addUser(this.name); //add user to the list of users
+    this.props.store.userName = this.name; // add current user
     //i/o to DB
     this.showMe = false;
   }

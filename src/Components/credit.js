@@ -15,4 +15,4 @@
 //teacher-female
 */}
 
-Illustrations by <a rel="nofollow" href="https://www.vecteezy.com">www.Vecteezy.com</a> --- classroom
+// Illustrations by <a rel="nofollow" href="https://www.vecteezy.com">www.Vecteezy.com</a> --- classroom
