@@ -31,6 +31,11 @@ io.on('connection', (socket) => {
     io.emit('user shot', shot);
   });
 
+  socket.on('remove shots', () => {
+    gameProperties.shots = [];
+    io.emit('remove shots');
+  });
+
   socket.on('update state', (state) => {
     console.log('state: '+state);
     if (gameProperties.gameState === state){
